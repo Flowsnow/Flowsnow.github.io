@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>git禁止在master分支push和commit - Suncle&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Suncle" /><meta name="description" content="作为管理者，在远端将master分支设为保护分支，可以从根源上杜绝直接推送到master的问题。dev分支同理。 作为开发者，在本地的git h" /><meta name="keywords" content="计算机, 后端, Python, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.74.3 with theme even" />
+
+
+<link rel="canonical" href="https://suncle.me/2020/09/25/git-forbids-push-and-commit-on-master-branch/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/sass/main.min.651e6917abb0239242daa570c2bec9867267bbcd83646da5a850afe573347b44.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="git禁止在master分支push和commit" />
+<meta property="og:description" content="作为管理者，在远端将master分支设为保护分支，可以从根源上杜绝直接推送到master的问题。dev分支同理。 作为开发者，在本地的git h" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://suncle.me/2020/09/25/git-forbids-push-and-commit-on-master-branch/" />
+<meta property="article:published_time" content="2020-09-25T13:25:35+08:00" />
+<meta property="article:modified_time" content="2020-09-25T13:25:35+08:00" />
+<meta itemprop="name" content="git禁止在master分支push和commit">
+<meta itemprop="description" content="作为管理者，在远端将master分支设为保护分支，可以从根源上杜绝直接推送到master的问题。dev分支同理。 作为开发者，在本地的git h">
+<meta itemprop="datePublished" content="2020-09-25T13:25:35+08:00" />
+<meta itemprop="dateModified" content="2020-09-25T13:25:35+08:00" />
+<meta itemprop="wordCount" content="998">
+
+
+
+<meta itemprop="keywords" content="hook,git," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="git禁止在master分支push和commit"/>
+<meta name="twitter:description" content="作为管理者，在远端将master分支设为保护分支，可以从根源上杜绝直接推送到master的问题。dev分支同理。 作为开发者，在本地的git h"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Suncle&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Suncle&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">git禁止在master分支push和commit</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-09-25 </span>
+        <div class="post-category">
+            <a href="/categories/DevOps/"> DevOps </a>
+            </div>
+          <span class="more-meta"> 约 998 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#禁止在master分支上commit">禁止在master分支上Commit</a></li>
+            <li><a href="#在master分支上commit时提示">在master分支上Commit时提示</a></li>
+            <li><a href="#禁止推送到master分支">禁止推送到master分支</a></li>
+            <li><a href="#推送到master分支时提示">推送到master分支时提示</a></li>
+            <li><a href="#推送时如果commit消息包含wip则禁止推送">推送时如果commit消息包含WIP则禁止推送</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>作为管理者，在远端将master分支设为保护分支，可以从根源上杜绝直接推送到master的问题。dev分支同理。</p>
+<p>作为开发者，在本地的git hook中加配置可以做到在commit和push操作时做对应的检查</p>
+<h3 id="禁止在master分支上commit">禁止在master分支上Commit</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/sh
+</span><span class="cp"></span>
+<span class="nv">protected_branch</span><span class="o">=</span><span class="s1">&#39;master&#39;</span>
+<span class="nv">current_branch</span><span class="o">=</span><span class="k">$(</span>git rev-parse --symbolic --abbrev-ref HEAD<span class="k">)</span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$protected_branch</span><span class="s2">&#34;</span> <span class="o">==</span> <span class="s2">&#34;</span><span class="nv">$current_branch</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+  <span class="nb">echo</span> <span class="s2">&#34;.git/hooks: Do not commit to </span><span class="nv">$current_branch</span><span class="s2"> branch&#34;</span>
+  <span class="nb">exit</span> <span class="m">1</span>
+<span class="k">fi</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="在master分支上commit时提示">在master分支上Commit时提示</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/sh
+</span><span class="cp"></span>
+<span class="nv">protected_branch</span><span class="o">=</span><span class="s1">&#39;master&#39;</span>
+<span class="nv">current_branch</span><span class="o">=</span><span class="k">$(</span>git rev-parse --symbolic --abbrev-ref HEAD<span class="k">)</span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$protected_branch</span><span class="s2">&#34;</span> <span class="o">==</span> <span class="s2">&#34;</span><span class="nv">$current_branch</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+  <span class="nb">read</span> -p <span class="s2">&#34;You&#39;re about to commit to master, is that what you intended? [y|n] &#34;</span> -n <span class="m">1</span> -r &lt;/dev/tty
+  <span class="nb">echo</span>
+  <span class="k">if</span> <span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$REPLY</span><span class="s2">&#34;</span> <span class="p">|</span> grep -E <span class="s1">&#39;^[Yy]$&#39;</span> &gt;/dev/null<span class="p">;</span> <span class="k">then</span>
+    <span class="nb">exit</span> <span class="m">0</span> <span class="c1"># commit will execute</span>
+  <span class="k">fi</span>
+  <span class="nb">exit</span> <span class="m">1</span> <span class="c1"># commit will not execute</span>
+<span class="k">fi</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="禁止推送到master分支">禁止推送到master分支</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/sh
+</span><span class="cp"></span>
+<span class="nv">protected_branch</span><span class="o">=</span><span class="s1">&#39;master&#39;</span>
+<span class="nv">remote_branch_prefix</span><span class="o">=</span><span class="s2">&#34;refs/heads/&#34;</span>
+<span class="nv">protected_remote_branch</span><span class="o">=</span><span class="nv">$remote_branch_prefix$protected_branch</span>
+
+<span class="k">while</span> <span class="nb">read</span> local_ref local_sha remote_ref remote_sha
+<span class="k">do</span>
+	<span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$protected_remote_branch</span><span class="s2">&#34;</span> <span class="o">==</span> <span class="s2">&#34;</span><span class="nv">$remote_ref</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+		<span class="nb">echo</span> <span class="s2">&#34;.git/hooks: Do not commit to </span><span class="nv">$protected_branch</span><span class="s2"> branch&#34;</span>
+	  <span class="nb">exit</span> <span class="m">1</span>
+	<span class="k">fi</span>
+<span class="k">done</span>
+
+<span class="nb">exit</span> <span class="m">0</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="推送到master分支时提示">推送到master分支时提示</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/sh
+</span><span class="cp"></span>
+<span class="nv">protected_branch</span><span class="o">=</span><span class="s1">&#39;master&#39;</span>
+<span class="nv">remote_branch_prefix</span><span class="o">=</span><span class="s2">&#34;refs/heads/&#34;</span>
+<span class="nv">protected_remote_branch</span><span class="o">=</span><span class="nv">$remote_branch_prefix$protected_branch</span>
+
+<span class="k">while</span> <span class="nb">read</span> local_ref local_sha remote_ref remote_sha
+<span class="k">do</span>
+	<span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$protected_remote_branch</span><span class="s2">&#34;</span> <span class="o">==</span> <span class="s2">&#34;</span><span class="nv">$remote_ref</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+		<span class="nb">read</span> -p <span class="s2">&#34;You&#39;re about to push master, is that what you intended? [y|n] &#34;</span> -n <span class="m">1</span> -r &lt; /dev/tty
+    <span class="nb">echo</span>
+    <span class="k">if</span> <span class="nb">echo</span> <span class="nv">$REPLY</span> <span class="p">|</span> grep -E <span class="s1">&#39;^[Yy]$&#39;</span> &gt; /dev/null
+    <span class="k">then</span>
+        <span class="nb">exit</span> <span class="m">0</span> <span class="c1"># push will execute</span>
+    <span class="k">fi</span>
+    <span class="nb">exit</span> <span class="m">1</span> <span class="c1"># push will not execute</span>
+	<span class="k">fi</span>
+<span class="k">done</span>
+
+<span class="nb">exit</span> <span class="m">0</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>为什么需要循环读取？因为git一次可以push多个分支</p>
+</blockquote>
+<h3 id="推送时如果commit消息包含wip则禁止推送">推送时如果commit消息包含WIP则禁止推送</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/sh
+</span><span class="cp"></span>
+<span class="nv">z40</span><span class="o">=</span><span class="m">0000000000000000000000000000000000000000</span>
+
+<span class="k">while</span> <span class="nb">read</span> local_ref local_sha remote_ref remote_sha<span class="p">;</span> <span class="k">do</span>
+  <span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$local_sha</span><span class="s2">&#34;</span> <span class="o">=</span> <span class="nv">$z40</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="c1"># Handle delete</span>
+    :
+  <span class="k">else</span>
+    <span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$remote_sha</span><span class="s2">&#34;</span> <span class="o">=</span> <span class="nv">$z40</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+      <span class="c1"># New branch, examine all commits</span>
+      <span class="nv">range</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$local_sha</span><span class="s2">&#34;</span>
+    <span class="k">else</span>
+      <span class="c1"># Update to existing branch, examine new commits</span>
+      <span class="nv">range</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$remote_sha</span><span class="s2">..</span><span class="nv">$local_sha</span><span class="s2">&#34;</span>
+    <span class="k">fi</span>
+
+    <span class="c1"># Check for WIP commit</span>
+    <span class="nv">commit</span><span class="o">=</span><span class="k">$(</span>git rev-list -n <span class="m">1</span> --grep <span class="s1">&#39;^feat: WIP&#39;</span> <span class="s2">&#34;</span><span class="nv">$range</span><span class="s2">&#34;</span><span class="k">)</span>
+    <span class="k">if</span> <span class="o">[</span> -n <span class="s2">&#34;</span><span class="nv">$commit</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+      <span class="nb">echo</span> &gt;<span class="p">&amp;</span><span class="m">2</span> <span class="s2">&#34;Found WIP commit in </span><span class="nv">$local_ref</span><span class="s2">, not pushing&#34;</span>
+      <span class="nb">exit</span> <span class="m">1</span>
+    <span class="k">fi</span>
+  <span class="k">fi</span>
+<span class="k">done</span>
+
+<span class="nb">exit</span> <span class="m">0</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>这时候，你可能会发现，你每一次clone项目之后都需要手动把commit和push的hook文件丢在<code>.git/hooks</code>目录下，是不是觉得不方便？别着急，有办法，我们可以让所有项目的hook操作统一到一个自定义目录中。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">mkdir ~/.git-hooks	<span class="c1"># 创建一个存放hook的自定义目录</span>
+git config --global core.hooksPath ~/.git-hooks	<span class="c1"># 更改git配置指定hook目录到自定义，先别着急执行，往后看</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这样就可以实现统一管理所有项目的hooks操作了</p>
+<p>然后，你会觉得全局统一管理也太霸道了吧，比如说，公司的项目可以统一一套hooks操作，但是我不想把这一套hooks应用于个人github的项目啊。也就是说你需要在不同的目录下面执行不同的hooks操作，那么该怎么办呢？还是有办法：git配置是可以根据不同目录使用不同配置的</p>
+<p>比如我只想统一管理<code>~/yy</code>目录下的所有项目，那就修改<code>~/.gitconfig</code>文件加入以下内容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[includeIf &#34;gitdir:~/yy/&#34;]</span>
+    <span class="na">path</span> <span class="o">=</span> <span class="s">.gitconfig-yy</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>然后增加一个<code>~/.gitconfig-yy</code>文件，在这个文件中加入yy目录下面的独有配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[core]</span>
+    <span class="na">hookspath</span> <span class="o">=</span> <span class="s">~/.git-hooks</span>
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<p>参考：</p>
+<ol>
+<li>
+<p><a href="https://stackoverflow.com/questions/42455506/in-pre-push-hook-get-git-push-command-full-content">https://stackoverflow.com/questions/42455506/in-pre-push-hook-get-git-push-command-full-content</a></p>
+</li>
+<li>
+<p><a href="https://www.geek-share.com/detail/2776108340.html">https://www.geek-share.com/detail/2776108340.html</a></p>
+</li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Suncle</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-09-25
+        
+    </span>
+  </p>
+  
+  
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://flowsnow.oss-cn-shanghai.aliyuncs.com/history/wechat-reward-image.png">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://flowsnow.oss-cn-shanghai.aliyuncs.com/history/alipay-reward-image.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/hook/">hook</a>
+          <a href="/tags/git/">git</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/2020/09/07/why-can-not-you-sleep-well-under-so-much-pressure/">
+            <span class="next-text nav-default">你压力都这么大了，怎么还睡不好？</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="suncle1993/suncle1993.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:im.suncle@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.facebook.com/sunclechen" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://github.com/suncle1993" class="iconfont icon-github" title="github"></a>
+      <a href="https://weibo.com/3655576503" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/flowsnow" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/362765899" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://suncle.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2015 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Suncle</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-72506112-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script id="baidu_analytics">
+  var _hmt = _hmt || [];
+  (function() {
+    if (window.location.hostname === 'localhost') return;
+    var hm = document.createElement("script"); hm.async = true;
+    hm.src = "https://hm.baidu.com/hm.js?41fc030db57d5570dd22f78997dc4a7e";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+
+</body>
+</html>

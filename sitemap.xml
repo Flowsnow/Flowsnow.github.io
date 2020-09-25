@@ -10,28 +10,56 @@
   
   <url>
     <loc>https://suncle.me/categories/</loc>
-    <lastmod>2020-09-07T02:22:53+08:00</lastmod>
+    <lastmod>2020-09-25T13:25:35+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://suncle.me/categories/DevOps/</loc>
+    <lastmod>2020-09-25T13:25:35+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://suncle.me/tags/git/</loc>
+    <lastmod>2020-09-25T13:25:35+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://suncle.me/2020/09/25/git-forbids-push-and-commit-on-master-branch/</loc>
+    <lastmod>2020-09-25T13:25:35+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://suncle.me/tags/hook/</loc>
+    <lastmod>2020-09-25T13:25:35+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://suncle.me/post/</loc>
-    <lastmod>2020-09-07T02:22:53+08:00</lastmod>
+    <lastmod>2020-09-25T13:25:35+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://suncle.me/</loc>
-    <lastmod>2020-09-07T02:22:53+08:00</lastmod>
+    <lastmod>2020-09-25T13:25:35+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://suncle.me/tags/</loc>
-    <lastmod>2020-09-07T02:22:53+08:00</lastmod>
+    <lastmod>2020-09-25T13:25:35+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -186,13 +214,6 @@
   <url>
     <loc>https://suncle.me/tags/%E7%BC%96%E7%A0%81/</loc>
     <lastmod>2019-11-26T10:36:51+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://suncle.me/categories/DevOps/</loc>
-    <lastmod>2019-11-15T16:57:54+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

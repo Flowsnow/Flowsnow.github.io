@@ -45,7 +45,7 @@
 <meta property="og:description" content="关注Python、Goalng的web后端、DevOps等领域" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suncle.me/" />
-<meta property="og:updated_time" content="2020-09-07T02:22:53+08:00" />
+<meta property="og:updated_time" content="2020-09-25T13:25:35+08:00" />
 <meta itemprop="name" content="Suncle&#39;s Blog">
 <meta itemprop="description" content="关注Python、Goalng的web后端、DevOps等领域">
 <meta name="twitter:card" content="summary"/>
@@ -115,6 +115,29 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2020/09/25/git-forbids-push-and-commit-on-master-branch/">git禁止在master分支push和commit</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-09-25 </span>
+      <div class="post-category">
+          <a href="/categories/DevOps/"> DevOps </a>
+          </div>
+        <span class="more-meta"> 约 998 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      作为管理者，在远端将master分支设为保护分支，可以从根源上杜绝直接推送到master的问题。dev分支同理。 作为开发者，在本地的git h
+    </div>
+    <div class="read-more">
+      <a href="/2020/09/25/git-forbids-push-and-commit-on-master-branch/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2020/09/07/why-can-not-you-sleep-well-under-so-much-pressure/">你压力都这么大了，怎么还睡不好？</a></h1>
@@ -382,46 +405,6 @@ tests/test_hello.py:18: AssertionError
     </div>
     <div class="read-more">
       <a href="/2019/11/13/how-to-consider-working-from-travel/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2019/08/02/Comparison-of-the-Open-Source-OLAP-Systems-for-BigData/">大数据OLAP系统比较</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-08-02 </span>
-      <div class="post-category">
-          <a href="/categories/BigData/"> BigData </a>
-          </div>
-        <span class="more-meta"> 约 2781 字 </span>
-        <span class="more-meta"> 预计阅读 6 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>大数据OLAP系统比较</p>
-<h1 id="结论">结论</h1>
-<p>选择presto和clickhouse配合使用</p>
-<ul>
-<li>
-<p>对实时性要求不严格的数据用presto查询</p>
-</li>
-<li>
-<p>对于实时性有要求的数据查询clickhouse</p>
-</li>
-</ul>
-<p>理由：</p>
-<ol>
-<li>核心原因：clickhouse相对于Apache Kylin等预计算方案非常省机器，成本最关键(比较穷，没办法)</li>
-<li>clickhouse的单表查询非常非常快</li>
-<li>目前再惠的数据仍然处于并将长期处于小规模阶段(集群内存少于1T，Cpu少于200vCore)，clickhouse在小规模集群上表现优于Druid和Pinot</li>
-<li>presto的综合性能好，在join操作时表现较好，保持目前数仓的这一套不变</li>
-</ol>
-    </div>
-    <div class="read-more">
-      <a href="/2019/08/02/Comparison-of-the-Open-Source-OLAP-Systems-for-BigData/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

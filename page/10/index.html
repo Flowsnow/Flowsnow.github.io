@@ -45,7 +45,7 @@
 <meta property="og:description" content="关注Python、Goalng的web后端、DevOps等领域" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suncle.me/" />
-<meta property="og:updated_time" content="2020-09-07T02:22:53+08:00" />
+<meta property="og:updated_time" content="2020-09-25T13:25:35+08:00" />
 <meta itemprop="name" content="Suncle&#39;s Blog">
 <meta itemprop="description" content="关注Python、Goalng的web后端、DevOps等领域">
 <meta name="twitter:card" content="summary"/>
@@ -115,6 +115,80 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2017/03/05/Python%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">Python异常处理</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-03-05 </span>
+      <div class="post-category">
+          <a href="/categories/Python/"> Python </a>
+          </div>
+        <span class="more-meta"> 约 2706 字 </span>
+        <span class="more-meta"> 预计阅读 6 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="区分exception和syntax-error">区分Exception和Syntax Error</h2>
+<p>在写Python程序的时候经常会报错，报错通常有以下两种情况：</p>
+<ol>
+<li>语法错误（Syntax Error）: <strong>部分语法错误属于异常</strong></li>
+<li>异常（Exception）</li>
+</ol>
+<h3 id="语法错误">语法错误</h3>
+<p>语法错误也称为解析错误，是最常遇到的一种错误</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="k">while</span> <span class="bp">True</span> <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Hello!&#39;</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&#34;&lt;ipython-input-1-5c66e4fd0ae9&gt;&#34;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="bp">True</span> <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Hello!&#39;</span><span class="p">)</span>
+                   <span class="o">^</span>
+<span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">syntax</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>当代码不符合Python语法的时候就会抛出SyntaxError。</p>
+<h3 id="异常">异常</h3>
+<p>Python用异常对象来表示异常情况。遇到错误后，会引发异常。如果异常没有处理或捕捉，程序就会用<strong>traceback</strong>终止程序的执行，如果是在多线程程序中，则会终止当前线程的执行。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="mi">1</span><span class="o">/</span><span class="mi">0</span>
+<span class="o">---------------------------------------------------------------------------</span>
+<span class="ne">ZeroDivisionError</span>                         <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mo">05</span><span class="n">c9758a9c21</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="o">----&gt;</span> <span class="mi">1</span> <span class="mi">1</span><span class="o">/</span><span class="mi">0</span>
+
+<span class="ne">ZeroDivisionError</span><span class="p">:</span> <span class="n">division</span> <span class="n">by</span> <span class="n">zero</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>除以0时，就会抛出ZeroDivisionError异常（ZeroDivisionError类的一个实例）。</p>
+    </div>
+    <div class="read-more">
+      <a href="/2017/03/05/Python%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2017/02/16/Python%E8%A3%85%E9%A5%B0%E5%99%A8%E5%AE%9E%E7%8E%B0%E5%87%BD%E6%95%B0%E5%8A%A8%E6%80%81%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%9F%A5/">Python装饰器实现函数动态类型检查</a></h1>
@@ -700,38 +774,6 @@ yum makecache
     </div>
     <div class="read-more">
       <a href="/2016/12/13/filling-holes-series-python-workbook/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/12/04/Python%E7%AD%94%E7%96%91%E8%A7%A3%E6%83%91/">Python答疑解惑</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2016-12-04 </span>
-      <div class="post-category">
-          <a href="/categories/Python/"> Python </a>
-          </div>
-        <span class="more-meta"> 约 1218 字 </span>
-        <span class="more-meta"> 预计阅读 3 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="python自动化运维答疑解惑">Python自动化运维答疑解惑</h1>
-<p>以下为Python入门的几个常见疑惑，现在统一在下面列出。</p>
-<p><strong>1、如果使用Python3.5.2，但是一般公司的生产环境上都是linux默认的Python，一般是2.6.6，而且没有权限更改，这种情况下我们有什么好的办法吗？</strong></p>
-<blockquote>
-<p>python2一般都有的第三方库，在Python3中都会有的，而且Python2在2020年就彻底停止支持了，所以没有特殊情况，直接选择python最新版本即可。除非你的项目必须依赖一个python2的第三方库且这个库在python3中并没有。</p>
-</blockquote>
-<p><strong>2、Python在现在以及未来主要应用的方向是什么？</strong></p>
-<blockquote>
-<p>Python的应用的主要方向就是两类，一类是爬虫方向，一类是自动化方向。至于自动化方向，分为自动化运维和自动化测试。Python做web开发在未来几年都不会是主流，web开发的主流还是会Java这种工业语言。</p>
-</blockquote>
-    </div>
-    <div class="read-more">
-      <a href="/2016/12/04/Python%E7%AD%94%E7%96%91%E8%A7%A3%E6%83%91/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

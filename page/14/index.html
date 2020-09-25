@@ -45,7 +45,7 @@
 <meta property="og:description" content="关注Python、Goalng的web后端、DevOps等领域" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suncle.me/" />
-<meta property="og:updated_time" content="2020-09-07T02:22:53+08:00" />
+<meta property="og:updated_time" content="2020-09-25T13:25:35+08:00" />
 <meta itemprop="name" content="Suncle&#39;s Blog">
 <meta itemprop="description" content="关注Python、Goalng的web后端、DevOps等领域">
 <meta name="twitter:card" content="summary"/>
@@ -115,6 +115,46 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2016/02/06/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%96%87%E4%BB%B6%E4%BB%A5%E5%8F%8AOracle%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84/">Oracle数据库的文件以及Oracle体系架构</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-02-06 </span>
+      <div class="post-category">
+          <a href="/categories/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93/"> Oracle数据库 </a>
+          </div>
+        <span class="more-meta"> 约 1653 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="第一部分oracle数据库的文件">第一部分、Oracle数据库的文件</h2>
+<h3 id="1参数文件控制实例的行为的参数的集合">1、参数文件:控制实例的行为的参数的集合</h3>
+<h4 id="参数文件的作用">参数文件的作用</h4>
+<ul>
+<li>设定数据库的限制</li>
+<li>设置用户或者进程的限制</li>
+<li>设定数据库资源的限制</li>
+<li>调整系统的性能</li>
+</ul>
+<h4 id="主要的参数文件">主要的参数文件</h4>
+<p>SGA_TARGET：Oracle在SGA区（SGA是Oracle最重要的一块内存区域，存放各种各样的数据、SQL解析以及redo日志等等）需要分配多大的内存。</p>
+<p>PGA_AGGREGATE_TARGET：此参数用来指定所有session总计可以使用最大PGA（程序全局区，会话分配的内存）内存。SGA和PGA基本就是oracle使用的内存的总和。</p>
+<p>DB_CACHE_SIZE：数据块缓冲缓存区大小</p>
+<p>DB_FILES：db_files参数限制了数据库数据文件总的个数,datafiles数目达到db_files指定后数据库不能添加新的数据文件</p>
+<p>LOG_ARCHIVE_DEST_n：此参数可以设置最多10(n=[1..10])个不同的归档路径</p>
+<p>USER_DUMP_DEST：specifies the pathname for a directory where the server will write debugging trace files on behalf of a user process.</p>
+<p>查看参数文件初始化值可以在oracle的官方文档上去看。在<a href="https://docs.oracle.com/cd/E11882_01/server.112/e40402/initparams002.htm#REFRN00101">Basic Initialization Parameters</a>就可以查看各项初始化参数了。每个基本参数点进去就有了详细的说明。</p>
+<p><img src="https://flowsnow.oss-cn-shanghai.aliyuncs.com/history/Oracle-Oracle%E5%9F%BA%E6%9C%AC%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8F%82%E6%95%B0.jpg" alt=""></p>
+    </div>
+    <div class="read-more">
+      <a href="/2016/02/06/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%96%87%E4%BB%B6%E4%BB%A5%E5%8F%8AOracle%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2016/02/02/%E4%B8%AA%E4%BA%BANext%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">个人Next主题配置文件</a></h1>
@@ -1588,46 +1628,6 @@ BROADCAST=192.168.118.255
     </div>
     <div class="read-more">
       <a href="/2016/01/10/Linux-vi%E7%9A%84%E4%BD%BF%E7%94%A8/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/01/09/Linux%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84%E7%AE%A1%E7%90%86/">Linux用户和组管理</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2016-01-09 </span>
-      <div class="post-category">
-          <a href="/categories/Linux/"> Linux </a>
-          </div>
-        <span class="more-meta"> 约 1544 字 </span>
-        <span class="more-meta"> 预计阅读 4 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <hr>
-<h2 id="概述">概述</h2>
-<p>只有root用户才能管理用户和组，所以一切命令都是root执行。</p>
-<h3 id="用户分类">用户分类</h3>
-<ol>
-<li>
-<p>超级用户：root，UID=0</p>
-</li>
-<li>
-<p>普通用户：具有操作系统有限的权限，500&lt;=UID&lt;=65535(2^32-1),有限个</p>
-</li>
-<li>
-<p>伪用户：为了安全,1&lt;=UID&lt;=499</p>
-<blockquote>
-<p>伪用户解释：linux中任何一个命令的操作都必须有一个用户的身份。伪用户一般和系统或者程序服务相关，比如bin,daemon,shutdown ,halt等，linux默认都有这些伪用户，伪用户通常不需要或无法登陆系统（nologin），可以没有宿主目录</p>
-</blockquote>
-</li>
-</ol>
-    </div>
-    <div class="read-more">
-      <a href="/2016/01/09/Linux%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84%E7%AE%A1%E7%90%86/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

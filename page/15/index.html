@@ -45,7 +45,7 @@
 <meta property="og:description" content="关注Python、Goalng的web后端、DevOps等领域" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suncle.me/" />
-<meta property="og:updated_time" content="2020-09-07T02:22:53+08:00" />
+<meta property="og:updated_time" content="2020-09-25T13:25:35+08:00" />
 <meta itemprop="name" content="Suncle&#39;s Blog">
 <meta itemprop="description" content="关注Python、Goalng的web后端、DevOps等领域">
 <meta name="twitter:card" content="summary"/>
@@ -115,6 +115,46 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2016/01/09/Linux%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84%E7%AE%A1%E7%90%86/">Linux用户和组管理</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-01-09 </span>
+      <div class="post-category">
+          <a href="/categories/Linux/"> Linux </a>
+          </div>
+        <span class="more-meta"> 约 1544 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <hr>
+<h2 id="概述">概述</h2>
+<p>只有root用户才能管理用户和组，所以一切命令都是root执行。</p>
+<h3 id="用户分类">用户分类</h3>
+<ol>
+<li>
+<p>超级用户：root，UID=0</p>
+</li>
+<li>
+<p>普通用户：具有操作系统有限的权限，500&lt;=UID&lt;=65535(2^32-1),有限个</p>
+</li>
+<li>
+<p>伪用户：为了安全,1&lt;=UID&lt;=499</p>
+<blockquote>
+<p>伪用户解释：linux中任何一个命令的操作都必须有一个用户的身份。伪用户一般和系统或者程序服务相关，比如bin,daemon,shutdown ,halt等，linux默认都有这些伪用户，伪用户通常不需要或无法登陆系统（nologin），可以没有宿主目录</p>
+</blockquote>
+</li>
+</ol>
+    </div>
+    <div class="read-more">
+      <a href="/2016/01/09/Linux%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84%E7%AE%A1%E7%90%86/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2016/01/08/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E4%B8%89%E7%A7%8D%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%BC%8F/">虚拟机的三种网络模式</a></h1>

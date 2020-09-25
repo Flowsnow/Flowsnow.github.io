@@ -45,7 +45,7 @@
 <meta property="og:description" content="关注Python、Goalng的web后端、DevOps等领域" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suncle.me/" />
-<meta property="og:updated_time" content="2020-09-07T02:22:53+08:00" />
+<meta property="og:updated_time" content="2020-09-25T13:25:35+08:00" />
 <meta itemprop="name" content="Suncle&#39;s Blog">
 <meta itemprop="description" content="关注Python、Goalng的web后端、DevOps等领域">
 <meta name="twitter:card" content="summary"/>
@@ -115,6 +115,38 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2016/12/04/Python%E7%AD%94%E7%96%91%E8%A7%A3%E6%83%91/">Python答疑解惑</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-12-04 </span>
+      <div class="post-category">
+          <a href="/categories/Python/"> Python </a>
+          </div>
+        <span class="more-meta"> 约 1218 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h1 id="python自动化运维答疑解惑">Python自动化运维答疑解惑</h1>
+<p>以下为Python入门的几个常见疑惑，现在统一在下面列出。</p>
+<p><strong>1、如果使用Python3.5.2，但是一般公司的生产环境上都是linux默认的Python，一般是2.6.6，而且没有权限更改，这种情况下我们有什么好的办法吗？</strong></p>
+<blockquote>
+<p>python2一般都有的第三方库，在Python3中都会有的，而且Python2在2020年就彻底停止支持了，所以没有特殊情况，直接选择python最新版本即可。除非你的项目必须依赖一个python2的第三方库且这个库在python3中并没有。</p>
+</blockquote>
+<p><strong>2、Python在现在以及未来主要应用的方向是什么？</strong></p>
+<blockquote>
+<p>Python的应用的主要方向就是两类，一类是爬虫方向，一类是自动化方向。至于自动化方向，分为自动化运维和自动化测试。Python做web开发在未来几年都不会是主流，web开发的主流还是会Java这种工业语言。</p>
+</blockquote>
+    </div>
+    <div class="read-more">
+      <a href="/2016/12/04/Python%E7%AD%94%E7%96%91%E8%A7%A3%E6%83%91/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2016/12/04/filling-hols-series-general-catalogue-of-basic-knowledge/">【填坑系列】Python基础知识总目录</a></h1>
@@ -824,52 +856,6 @@
     </div>
     <div class="read-more">
       <a href="/2016/03/28/%E8%BF%90%E7%BB%B4%E4%BA%BA%E5%91%98%E5%B8%B8%E7%94%A8%E7%9A%84Linux%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/03/23/%E4%BA%8B%E5%8A%A1Transaction/">事务Transaction</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2016-03-23 </span>
-      <div class="post-category">
-          <a href="/categories/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93/"> Oracle数据库 </a>
-          </div>
-        <span class="more-meta"> 约 3298 字 </span>
-        <span class="more-meta"> 预计阅读 7 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>参考资料：</p>
-<p><a href="https://docs.oracle.com/cd/E11882_01/server.112/e40540/transact.htmhttps://docs.oracle.com/cd/E11882_01/server.112/e40540/transact.htm" rel="nofollow">Transactions</a></p>
-<p><a href="https://blog.csdn.net/junmail/article/details/5556561">关于Oracle事务的总结</a></p>
-<hr>
-<h2 id="什么是事务">什么是事务？</h2>
-<p>事务(Transaction)是访问并可能更新数据库中各种<a href="http://baike.baidu.com/view/178581.htm">数据项</a>的一个程序执行单元(unit)。事务由事务开始(<strong>begin transaction</strong>)和事务结束(<strong>end transaction</strong>)之间执行的全体操作组成。</p>
-<h2 id="事务的属性-acid">事务的属性-ACID</h2>
-<ul>
-<li>
-<p><strong>原子性（Atomicity）</strong>-事务的原子性强调了一个事物是一个逻辑工作单元，是一个整体，是不可分割的。一个事务所包含的操作要么全部做，要不全部不做。</p>
-</li>
-<li>
-<p><strong>一致性（Consistency）</strong>-一个事务执行一项数据库操作，事务使数据库从一种一致性的状态变换成另一种一致性状态。</p>
-</li>
-<li>
-<p><strong>隔离性（Isolation）</strong>-在事务未提交前，它操作的数据，对其他用户不可见。</p>
-</li>
-<li>
-<p><strong>持久性（Durability）</strong>-一旦事务成功完成，该事务对数据库所施加的所有更新都是永久的。</p>
-<ul>
-<li>redo日志&ndash;提交的事务被永久的记录到redo日志中。</li>
-</ul>
-</li>
-</ul>
-    </div>
-    <div class="read-more">
-      <a href="/2016/03/23/%E4%BA%8B%E5%8A%A1Transaction/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

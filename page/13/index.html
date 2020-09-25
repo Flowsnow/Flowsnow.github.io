@@ -45,7 +45,7 @@
 <meta property="og:description" content="关注Python、Goalng的web后端、DevOps等领域" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suncle.me/" />
-<meta property="og:updated_time" content="2020-09-07T02:22:53+08:00" />
+<meta property="og:updated_time" content="2020-09-25T13:25:35+08:00" />
 <meta itemprop="name" content="Suncle&#39;s Blog">
 <meta itemprop="description" content="关注Python、Goalng的web后端、DevOps等领域">
 <meta name="twitter:card" content="summary"/>
@@ -115,6 +115,90 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2016/03/16/Oracle%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%92%8C%E5%90%8E%E5%8F%B0%E8%BF%9B%E7%A8%8B/">Oracle内存结构和后台进程</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-03-16 </span>
+      <div class="post-category">
+          <a href="/categories/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93/"> Oracle数据库 </a>
+          </div>
+        <span class="more-meta"> 约 2847 字 </span>
+        <span class="more-meta"> 预计阅读 6 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p><img src="https://flowsnow.oss-cn-shanghai.aliyuncs.com/history/Oracle-Oracle%E5%86%85%E5%AD%98%E5%92%8C%E5%90%8E%E5%8F%B0%E8%BF%9B%E7%A8%8B.png" alt=""></p>
+<p><strong>Oracle实例=内存+后台进程</strong></p>
+<p><strong>Oracle数据库=实例+物理存储结构</strong></p>
+<p>由上图可知Oracle实例（一个Instance）由内存结构和程序结构组成，内存结构主要是SGA，程序结构主要是后台进程。</p>
+<p>物理存储结构主要是数据库文件。</p>
+<p>这次仔细学习了Oracle实例的具体内容。</p>
+<h2 id="为什么oracle数据库做的这么复杂">为什么Oracle数据库做的这么复杂？</h2>
+<p><strong>内存</strong></p>
+<ul>
+<li>数据查询的速度</li>
+<li>更好的提升数据处理的速度</li>
+</ul>
+<p><strong>后台进程</strong></p>
+<ul>
+<li>为了完成特定的任务的服务进程</li>
+</ul>
+<p><strong>数据文件</strong></p>
+<ul>
+<li>数据的永久性保存</li>
+<li>也是数据库性能下降的主要原因</li>
+</ul>
+<h2 id="实例之内存结构">实例之内存结构</h2>
+<h3 id="system-global-areasga">System global area(SGA)</h3>
+<p>SGA区包括Oracle实例需要的一系列内存组件，用于存放数据信息和数据控制信息，这些<strong>内存信息被所有进程所共享</strong>。SGA的各个组成包括：</p>
+<table>
+<thead>
+<tr>
+<th align="left">组成</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Database buffer cache</strong></td>
+<td align="left">数据库高速缓冲区，里面存放着从磁盘读取到内存的数据块，这些数据块可以被所有的会话访问，是全局共享的。buffer cache分为三个部分，分别是default pool，keep pool，recycle pool。default pool是正常情况下，数据块存放的内存区域，default pool会根据一个过期算法（LRU，Least Recently Used，近期最少使用）将过期的脏数据（修改过的数据，没有修改的数据可以不写到磁盘上）写到磁盘上。keep pool这个区域用于将一些数据始终固定在内存中。recycle pool存放一些不经常使用的数据块，避免这些数据块在default pool中占据空间。</td>
+</tr>
+<tr>
+<td align="left"><strong>Shared pool</strong></td>
+<td align="left">共享池缓存着一些用户可以共用的信息：1、可以重新使用的SQL语句  2、存放一些数据字典的信息，包括用户账户数据，表，索引，权限等等。  3、存储存放在数据库中的可执行代码。</td>
+</tr>
+<tr>
+<td align="left"><strong>Redo log buffer</strong></td>
+<td align="left">重做日志缓冲区，存放着数据库操作产生的redo数据，Redo log buffer以循环的方式写入，当redo log已经写到磁盘后，就可以被后续的日志数据覆盖。</td>
+</tr>
+<tr>
+<td align="left"><strong>Large pool</strong></td>
+<td align="left">对数据的处理不适用LRU算法，比shared pool更搞笑的内存收取方式。并行执行时会使用large pool。Rman备份时启动并行备份方式时，使用large pool。</td>
+</tr>
+<tr>
+<td align="left"><strong>Java pool</strong></td>
+<td align="left">这块内存区域用来存放所有特定会话的JVM（Java Virtual Machine）中的java代码和数据。</td>
+</tr>
+<tr>
+<td align="left"><strong>Streams pool</strong></td>
+<td align="left">里面存放着流相关的信息，比如流队列，其中也会流复制中capture进程提供进程内存空间。Streams pool只为流复制提供内存空间，如果没有手工配置，也没有配置流复制，这个空间将设置为0。</td>
+</tr>
+<tr>
+<td align="left"><strong>Result cache</strong></td>
+<td align="left">结果缓存，当表的访问方式以读为主前提下，从一张大表中过滤出少量的记录作为结果集，把查询结果集放入result cache，后续相同的查询语句可以直接从result cache里获取想要的结果，省去了CPU、I/O上的开销。这个SGA组件加速了频繁运行的查询语句的执行速度。</td>
+</tr>
+</tbody>
+</table>
+    </div>
+    <div class="read-more">
+      <a href="/2016/03/16/Oracle%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%92%8C%E5%90%8E%E5%8F%B0%E8%BF%9B%E7%A8%8B/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2016/03/16/DBA%E6%97%A5%E5%B8%B8%E5%B7%A5%E4%BD%9C%E5%92%8C%E8%81%8C%E8%B4%A3/">DBA日常工作和职责</a></h1>
@@ -890,46 +974,6 @@ SQL&gt; commit;
     </div>
     <div class="read-more">
       <a href="/2016/02/19/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%AF%B9%E8%B1%A1/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/02/06/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%96%87%E4%BB%B6%E4%BB%A5%E5%8F%8AOracle%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84/">Oracle数据库的文件以及Oracle体系架构</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2016-02-06 </span>
-      <div class="post-category">
-          <a href="/categories/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93/"> Oracle数据库 </a>
-          </div>
-        <span class="more-meta"> 约 1653 字 </span>
-        <span class="more-meta"> 预计阅读 4 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="第一部分oracle数据库的文件">第一部分、Oracle数据库的文件</h2>
-<h3 id="1参数文件控制实例的行为的参数的集合">1、参数文件:控制实例的行为的参数的集合</h3>
-<h4 id="参数文件的作用">参数文件的作用</h4>
-<ul>
-<li>设定数据库的限制</li>
-<li>设置用户或者进程的限制</li>
-<li>设定数据库资源的限制</li>
-<li>调整系统的性能</li>
-</ul>
-<h4 id="主要的参数文件">主要的参数文件</h4>
-<p>SGA_TARGET：Oracle在SGA区（SGA是Oracle最重要的一块内存区域，存放各种各样的数据、SQL解析以及redo日志等等）需要分配多大的内存。</p>
-<p>PGA_AGGREGATE_TARGET：此参数用来指定所有session总计可以使用最大PGA（程序全局区，会话分配的内存）内存。SGA和PGA基本就是oracle使用的内存的总和。</p>
-<p>DB_CACHE_SIZE：数据块缓冲缓存区大小</p>
-<p>DB_FILES：db_files参数限制了数据库数据文件总的个数,datafiles数目达到db_files指定后数据库不能添加新的数据文件</p>
-<p>LOG_ARCHIVE_DEST_n：此参数可以设置最多10(n=[1..10])个不同的归档路径</p>
-<p>USER_DUMP_DEST：specifies the pathname for a directory where the server will write debugging trace files on behalf of a user process.</p>
-<p>查看参数文件初始化值可以在oracle的官方文档上去看。在<a href="https://docs.oracle.com/cd/E11882_01/server.112/e40402/initparams002.htm#REFRN00101">Basic Initialization Parameters</a>就可以查看各项初始化参数了。每个基本参数点进去就有了详细的说明。</p>
-<p><img src="https://flowsnow.oss-cn-shanghai.aliyuncs.com/history/Oracle-Oracle%E5%9F%BA%E6%9C%AC%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8F%82%E6%95%B0.jpg" alt=""></p>
-    </div>
-    <div class="read-more">
-      <a href="/2016/02/06/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%96%87%E4%BB%B6%E4%BB%A5%E5%8F%8AOracle%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

@@ -45,7 +45,7 @@
 <meta property="og:description" content="关注Python、Goalng的web后端、DevOps等领域" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suncle.me/" />
-<meta property="og:updated_time" content="2020-09-07T02:22:53+08:00" />
+<meta property="og:updated_time" content="2020-09-25T13:25:35+08:00" />
 <meta itemprop="name" content="Suncle&#39;s Blog">
 <meta itemprop="description" content="关注Python、Goalng的web后端、DevOps等领域">
 <meta name="twitter:card" content="summary"/>
@@ -115,6 +115,52 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2016/03/23/%E4%BA%8B%E5%8A%A1Transaction/">事务Transaction</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-03-23 </span>
+      <div class="post-category">
+          <a href="/categories/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93/"> Oracle数据库 </a>
+          </div>
+        <span class="more-meta"> 约 3298 字 </span>
+        <span class="more-meta"> 预计阅读 7 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>参考资料：</p>
+<p><a href="https://docs.oracle.com/cd/E11882_01/server.112/e40540/transact.htmhttps://docs.oracle.com/cd/E11882_01/server.112/e40540/transact.htm" rel="nofollow">Transactions</a></p>
+<p><a href="https://blog.csdn.net/junmail/article/details/5556561">关于Oracle事务的总结</a></p>
+<hr>
+<h2 id="什么是事务">什么是事务？</h2>
+<p>事务(Transaction)是访问并可能更新数据库中各种<a href="http://baike.baidu.com/view/178581.htm">数据项</a>的一个程序执行单元(unit)。事务由事务开始(<strong>begin transaction</strong>)和事务结束(<strong>end transaction</strong>)之间执行的全体操作组成。</p>
+<h2 id="事务的属性-acid">事务的属性-ACID</h2>
+<ul>
+<li>
+<p><strong>原子性（Atomicity）</strong>-事务的原子性强调了一个事物是一个逻辑工作单元，是一个整体，是不可分割的。一个事务所包含的操作要么全部做，要不全部不做。</p>
+</li>
+<li>
+<p><strong>一致性（Consistency）</strong>-一个事务执行一项数据库操作，事务使数据库从一种一致性的状态变换成另一种一致性状态。</p>
+</li>
+<li>
+<p><strong>隔离性（Isolation）</strong>-在事务未提交前，它操作的数据，对其他用户不可见。</p>
+</li>
+<li>
+<p><strong>持久性（Durability）</strong>-一旦事务成功完成，该事务对数据库所施加的所有更新都是永久的。</p>
+<ul>
+<li>redo日志&ndash;提交的事务被永久的记录到redo日志中。</li>
+</ul>
+</li>
+</ul>
+    </div>
+    <div class="read-more">
+      <a href="/2016/03/23/%E4%BA%8B%E5%8A%A1Transaction/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2016/03/22/PL-SQL-Developer%E8%BF%9E%E6%8E%A5%E6%9C%AC%E5%9C%B0Oracle-11g-64%E4%BD%8D%E6%95%B0%E6%8D%AE%E5%BA%93/">PL/SQL Developer连接本地Oracle 11g 64位数据库</a></h1>
@@ -900,90 +946,6 @@ SQL&gt; select * from t1;
     </div>
     <div class="read-more">
       <a href="/2016/03/16/%E9%87%8D%E5%81%9A%E6%97%A5%E5%BF%97%E5%92%8C%E6%97%A5%E5%BF%97%E6%8C%96%E6%8E%98/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/03/16/Oracle%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%92%8C%E5%90%8E%E5%8F%B0%E8%BF%9B%E7%A8%8B/">Oracle内存结构和后台进程</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2016-03-16 </span>
-      <div class="post-category">
-          <a href="/categories/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93/"> Oracle数据库 </a>
-          </div>
-        <span class="more-meta"> 约 2847 字 </span>
-        <span class="more-meta"> 预计阅读 6 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p><img src="https://flowsnow.oss-cn-shanghai.aliyuncs.com/history/Oracle-Oracle%E5%86%85%E5%AD%98%E5%92%8C%E5%90%8E%E5%8F%B0%E8%BF%9B%E7%A8%8B.png" alt=""></p>
-<p><strong>Oracle实例=内存+后台进程</strong></p>
-<p><strong>Oracle数据库=实例+物理存储结构</strong></p>
-<p>由上图可知Oracle实例（一个Instance）由内存结构和程序结构组成，内存结构主要是SGA，程序结构主要是后台进程。</p>
-<p>物理存储结构主要是数据库文件。</p>
-<p>这次仔细学习了Oracle实例的具体内容。</p>
-<h2 id="为什么oracle数据库做的这么复杂">为什么Oracle数据库做的这么复杂？</h2>
-<p><strong>内存</strong></p>
-<ul>
-<li>数据查询的速度</li>
-<li>更好的提升数据处理的速度</li>
-</ul>
-<p><strong>后台进程</strong></p>
-<ul>
-<li>为了完成特定的任务的服务进程</li>
-</ul>
-<p><strong>数据文件</strong></p>
-<ul>
-<li>数据的永久性保存</li>
-<li>也是数据库性能下降的主要原因</li>
-</ul>
-<h2 id="实例之内存结构">实例之内存结构</h2>
-<h3 id="system-global-areasga">System global area(SGA)</h3>
-<p>SGA区包括Oracle实例需要的一系列内存组件，用于存放数据信息和数据控制信息，这些<strong>内存信息被所有进程所共享</strong>。SGA的各个组成包括：</p>
-<table>
-<thead>
-<tr>
-<th align="left">组成</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left"><strong>Database buffer cache</strong></td>
-<td align="left">数据库高速缓冲区，里面存放着从磁盘读取到内存的数据块，这些数据块可以被所有的会话访问，是全局共享的。buffer cache分为三个部分，分别是default pool，keep pool，recycle pool。default pool是正常情况下，数据块存放的内存区域，default pool会根据一个过期算法（LRU，Least Recently Used，近期最少使用）将过期的脏数据（修改过的数据，没有修改的数据可以不写到磁盘上）写到磁盘上。keep pool这个区域用于将一些数据始终固定在内存中。recycle pool存放一些不经常使用的数据块，避免这些数据块在default pool中占据空间。</td>
-</tr>
-<tr>
-<td align="left"><strong>Shared pool</strong></td>
-<td align="left">共享池缓存着一些用户可以共用的信息：1、可以重新使用的SQL语句  2、存放一些数据字典的信息，包括用户账户数据，表，索引，权限等等。  3、存储存放在数据库中的可执行代码。</td>
-</tr>
-<tr>
-<td align="left"><strong>Redo log buffer</strong></td>
-<td align="left">重做日志缓冲区，存放着数据库操作产生的redo数据，Redo log buffer以循环的方式写入，当redo log已经写到磁盘后，就可以被后续的日志数据覆盖。</td>
-</tr>
-<tr>
-<td align="left"><strong>Large pool</strong></td>
-<td align="left">对数据的处理不适用LRU算法，比shared pool更搞笑的内存收取方式。并行执行时会使用large pool。Rman备份时启动并行备份方式时，使用large pool。</td>
-</tr>
-<tr>
-<td align="left"><strong>Java pool</strong></td>
-<td align="left">这块内存区域用来存放所有特定会话的JVM（Java Virtual Machine）中的java代码和数据。</td>
-</tr>
-<tr>
-<td align="left"><strong>Streams pool</strong></td>
-<td align="left">里面存放着流相关的信息，比如流队列，其中也会流复制中capture进程提供进程内存空间。Streams pool只为流复制提供内存空间，如果没有手工配置，也没有配置流复制，这个空间将设置为0。</td>
-</tr>
-<tr>
-<td align="left"><strong>Result cache</strong></td>
-<td align="left">结果缓存，当表的访问方式以读为主前提下，从一张大表中过滤出少量的记录作为结果集，把查询结果集放入result cache，后续相同的查询语句可以直接从result cache里获取想要的结果，省去了CPU、I/O上的开销。这个SGA组件加速了频繁运行的查询语句的执行速度。</td>
-</tr>
-</tbody>
-</table>
-    </div>
-    <div class="read-more">
-      <a href="/2016/03/16/Oracle%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%92%8C%E5%90%8E%E5%8F%B0%E8%BF%9B%E7%A8%8B/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

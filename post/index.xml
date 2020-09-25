@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Suncle&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 07 Sep 2020 02:22:53 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 25 Sep 2020 13:25:35 +0800</lastBuildDate>
     
 	<atom:link href="https://suncle.me/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>git禁止在master分支push和commit</title>
+      <link>https://suncle.me/2020/09/25/git-forbids-push-and-commit-on-master-branch/</link>
+      <pubDate>Fri, 25 Sep 2020 13:25:35 +0800</pubDate>
+      
+      <guid>https://suncle.me/2020/09/25/git-forbids-push-and-commit-on-master-branch/</guid>
+      <description>作为管理者，在远端将master分支设为保护分支，可以从根源上杜绝直接推送到master的问题。dev分支同理。 作为开发者，在本地的git h</description>
+    </item>
     
     <item>
       <title>你压力都这么大了，怎么还睡不好？</title>
