@@ -17,7 +17,8 @@
       <pubDate>Fri, 25 Sep 2020 13:25:35 +0800</pubDate>
       
       <guid>https://suncle.me/2020/09/25/git-forbids-push-and-commit-on-master-branch/</guid>
-      <description>作为管理者，在远端将master分支设为保护分支，可以从根源上杜绝直接推送到master的问题。dev分支同理。 作为开发者，在本地的git h</description>
+      <description>&lt;p&gt;作为管理者，在远端将master分支设为保护分支，可以从根源上杜绝直接推送到master的问题。dev分支同理。&lt;/p&gt;
+&lt;p&gt;作为开发者，在本地的git hook中加配置可以做到在commit和push操作时做对应的检查&lt;/p&gt;</description>
     </item>
     
     <item>
