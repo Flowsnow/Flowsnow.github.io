@@ -53,7 +53,7 @@
 作为开发者，在本地的git hook中加配置可以做到在commit和push操作时做对应的检查">
 <meta itemprop="datePublished" content="2020-09-25T13:25:35+08:00" />
 <meta itemprop="dateModified" content="2020-09-25T13:25:35+08:00" />
-<meta itemprop="wordCount" content="1097">
+<meta itemprop="wordCount" content="1129">
 
 
 
@@ -135,7 +135,7 @@
         <div class="post-category">
             <a href="/categories/DevOps/"> DevOps </a>
             </div>
-          <span class="more-meta"> 约 1097 字 </span>
+          <span class="more-meta"> 约 1129 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -390,10 +390,13 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash">mkdir ~/.git-hooks	<span class="c1"># 创建一个存放hook的自定义目录</span>
-git config --global core.hooksPath ~/.git-hooks	<span class="c1"># 更改git配置指定hook目录到自定义，先别着急执行，往后看</span>
+git config --global core.hookspath ~/.git-hooks	<span class="c1"># 更改git配置指定hook目录到自定义，先别着急执行，往后看</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>这样就可以实现统一管理所有项目的hooks操作了</p>
+<blockquote>
+<p>core.hookspath配置需要git版本在v2.9以上才行</p>
+</blockquote>
 <p>然后，你会觉得全局统一管理也太霸道了吧，比如说，公司的项目可以统一一套hooks操作，但是我不想把这一套hooks应用于个人github的项目啊。也就是说你需要在不同的目录下面执行不同的hooks操作，那么该怎么办呢？还是有办法：git配置是可以根据不同目录使用不同配置的</p>
 <p>比如我只想统一管理<code>~/yy</code>目录下的所有项目，那就修改<code>~/.gitconfig</code>文件加入以下内容</p>
 <div class="highlight"><div class="chroma">
