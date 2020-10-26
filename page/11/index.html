@@ -45,7 +45,7 @@
 <meta property="og:description" content="关注Python、Goalng的web后端、DevOps等领域" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suncle.me/" />
-<meta property="og:updated_time" content="2020-09-25T13:25:35+08:00" />
+<meta property="og:updated_time" content="2020-10-26T19:30:14+08:00" />
 <meta itemprop="name" content="Suncle&#39;s Blog">
 <meta itemprop="description" content="关注Python、Goalng的web后端、DevOps等领域">
 <meta name="twitter:card" content="summary"/>
@@ -115,6 +115,119 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2016/12/13/filling-holes-series-python-workbook/">【填坑系列】Python习题集</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-12-13 </span>
+      <div class="post-category">
+          <a href="/categories/Python/"> Python </a>
+          </div>
+        <span class="more-meta"> 约 4082 字 </span>
+        <span class="more-meta"> 预计阅读 9 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="求100万以内的所有素数个数">求100万以内的所有素数个数</h2>
+<p><strong>第一种方法</strong></p>
+<p><strong>思路</strong>：当前数为i，则遍历比int(sqrt(i))+1小的所有数是是否都不可以整除，是，则是素数</p>
+<p><strong>理论</strong>：如果遍历所有比i小的除数j并且当除数j&gt;int(sqrt(i))时，如果j能整出i，那么必定存在一个小于int(sqrt(i))的数能整出i，因此我们只需只需遍历int(sqrt(i))+1以内的数即可</p>
+<p><strong>代码</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1000000</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+       <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span> 
+<span class="k">print</span><span class="p">(</span><span class="n">cnt</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>输出结果如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">78498
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>第二种方法</strong></p>
+<p><strong>理论</strong></p>
+<ul>
+<li>假如一个整数是合数，则一定存在一个小于它的素数作为其因数。比如9是一个合数，而素数3就是它的一个因数。</li>
+<li>假如我们知道了小于一个数的所有素数，则只需确定该数能不能被这些素数整除即可。如果不能被整除，则这个数一定是个素数。反之，则不是。</li>
+<li>也就是说当我们获得一个素数时，可以将它所有的倍数都标记为非素数，这样当我们遍历到一个数时，他没有被任何小于它的素数标记为非素数，则可以确定该数是个素数。</li>
+<li>比如：从2开始，在初始化时2就是素数。3是类似。遍历到4时，4已经被素数2给标记了，直接跳过</li>
+</ul>
+<p><strong>思路</strong></p>
+<ul>
+<li>初始化一个大范围内的列表，初始时所有数都为素数，遍历时按照以上理论将所有的非素数标记出来即可</li>
+</ul>
+<p><strong>代码</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">is_prime</span> <span class="o">=</span> <span class="p">[</span><span class="bp">True</span><span class="p">]</span><span class="o">*</span><span class="mi">1000000</span>
+<span class="n">is_prime</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">is_prime</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">is_prime</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">i</span>
+    <span class="k">while</span> <span class="n">k</span> <span class="o">*</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">1000000</span><span class="p">:</span>
+        <span class="n">is_prime</span><span class="p">[</span><span class="n">k</span> <span class="o">*</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="n">cnt</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>输出结果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">78498
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+    <div class="read-more">
+      <a href="/2016/12/13/filling-holes-series-python-workbook/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2016/12/04/Python%E7%AD%94%E7%96%91%E8%A7%A3%E6%83%91/">Python答疑解惑</a></h1>
@@ -765,97 +878,6 @@
     </div>
     <div class="read-more">
       <a href="/2016/05/10/opencv%E7%9A%84Mat%E7%B1%BB%E5%9E%8B%E4%BB%A5%E5%8F%8A%E5%9F%BA%E6%9C%AC%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/03/28/%E8%BF%90%E7%BB%B4%E4%BA%BA%E5%91%98%E5%B8%B8%E7%94%A8%E7%9A%84Linux%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/">运维人员常用的Linux命令总结</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2016-03-28 </span>
-      <div class="post-category">
-          <a href="/categories/Linux/"> Linux </a>
-          </div>
-        <span class="more-meta"> 约 3390 字 </span>
-        <span class="more-meta"> 预计阅读 7 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <hr>
-<h2 id="目录结构">目录结构</h2>
-<table>
-<thead>
-<tr>
-<th>目录</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>/bin</td>
-<td>存放可执行文件</td>
-</tr>
-<tr>
-<td>/boot</td>
-<td>核心与启动相关文件</td>
-</tr>
-<tr>
-<td>/dev</td>
-<td>设备有关的文件</td>
-</tr>
-<tr>
-<td>/etc</td>
-<td>相关的配置信息</td>
-</tr>
-<tr>
-<td>/etc/rc.d</td>
-<td>存放开关机过程中用到的脚本文件</td>
-</tr>
-<tr>
-<td>/etc/rc.d/init.d</td>
-<td>所以服务默认的启动脚本都放在这里</td>
-</tr>
-<tr>
-<td>/etc/xinetd.d</td>
-<td>启动服务可在此找到</td>
-</tr>
-<tr>
-<td>/etc/X11</td>
-<td>与X windows有关的配置文件</td>
-</tr>
-<tr>
-<td>/lib</td>
-<td>执行或编译某些程序时用到的函数库</td>
-</tr>
-<tr>
-<td>/proc</td>
-<td>系统核心与执行程序所需要的一些信息。都是内存中的数据</td>
-</tr>
-<tr>
-<td>/root</td>
-<td>系统管理员根目录</td>
-</tr>
-<tr>
-<td>/sbin</td>
-<td>系统管理常用的程序</td>
-</tr>
-<tr>
-<td>/tmp</td>
-<td>存放临时文件的地方</td>
-</tr>
-<tr>
-<td>/usr</td>
-<td>存放系统信息，用来存放程序与指令。类似windows下的program  flies</td>
-</tr>
-</tbody>
-</table>
-<p>其中重点需要掌握的是/etc目录和/proc目录。</p>
-    </div>
-    <div class="read-more">
-      <a href="/2016/03/28/%E8%BF%90%E7%BB%B4%E4%BA%BA%E5%91%98%E5%B8%B8%E7%94%A8%E7%9A%84Linux%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

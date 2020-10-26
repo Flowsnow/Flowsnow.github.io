@@ -10,7 +10,49 @@
   
   <url>
     <loc>https://suncle.me/categories/</loc>
-    <lastmod>2020-09-25T13:25:35+08:00</lastmod>
+    <lastmod>2020-10-26T19:30:14+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://suncle.me/post/</loc>
+    <lastmod>2020-10-26T19:30:14+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://suncle.me/</loc>
+    <lastmod>2020-10-26T19:30:14+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://suncle.me/tags/</loc>
+    <lastmod>2020-10-26T19:30:14+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://suncle.me/2020/10/26/new-year-day-go-to-emeishan/</loc>
+    <lastmod>2020-10-26T19:30:14+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://suncle.me/tags/%E6%97%85%E6%B8%B8/</loc>
+    <lastmod>2020-10-26T19:30:14+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://suncle.me/categories/%E7%81%B5%E9%AD%82%E7%8B%AC%E6%97%85/</loc>
+    <lastmod>2020-10-26T19:30:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -38,27 +80,6 @@
   
   <url>
     <loc>https://suncle.me/tags/hook/</loc>
-    <lastmod>2020-09-25T13:25:35+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://suncle.me/post/</loc>
-    <lastmod>2020-09-25T13:25:35+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://suncle.me/</loc>
-    <lastmod>2020-09-25T13:25:35+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://suncle.me/tags/</loc>
     <lastmod>2020-09-25T13:25:35+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -458,13 +479,6 @@
   
   <url>
     <loc>https://suncle.me/tags/%E6%95%A6%E7%85%8C/</loc>
-    <lastmod>2019-05-13T00:20:19+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://suncle.me/categories/%E7%81%B5%E9%AD%82%E7%8B%AC%E6%97%85/</loc>
     <lastmod>2019-05-13T00:20:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

@@ -45,7 +45,7 @@
 <meta property="og:description" content="关注Python、Goalng的web后端、DevOps等领域" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suncle.me/" />
-<meta property="og:updated_time" content="2020-09-25T13:25:35+08:00" />
+<meta property="og:updated_time" content="2020-10-26T19:30:14+08:00" />
 <meta itemprop="name" content="Suncle&#39;s Blog">
 <meta itemprop="description" content="关注Python、Goalng的web后端、DevOps等领域">
 <meta name="twitter:card" content="summary"/>
@@ -115,6 +115,97 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2016/03/28/%E8%BF%90%E7%BB%B4%E4%BA%BA%E5%91%98%E5%B8%B8%E7%94%A8%E7%9A%84Linux%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/">运维人员常用的Linux命令总结</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-03-28 </span>
+      <div class="post-category">
+          <a href="/categories/Linux/"> Linux </a>
+          </div>
+        <span class="more-meta"> 约 3390 字 </span>
+        <span class="more-meta"> 预计阅读 7 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <hr>
+<h2 id="目录结构">目录结构</h2>
+<table>
+<thead>
+<tr>
+<th>目录</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/bin</td>
+<td>存放可执行文件</td>
+</tr>
+<tr>
+<td>/boot</td>
+<td>核心与启动相关文件</td>
+</tr>
+<tr>
+<td>/dev</td>
+<td>设备有关的文件</td>
+</tr>
+<tr>
+<td>/etc</td>
+<td>相关的配置信息</td>
+</tr>
+<tr>
+<td>/etc/rc.d</td>
+<td>存放开关机过程中用到的脚本文件</td>
+</tr>
+<tr>
+<td>/etc/rc.d/init.d</td>
+<td>所以服务默认的启动脚本都放在这里</td>
+</tr>
+<tr>
+<td>/etc/xinetd.d</td>
+<td>启动服务可在此找到</td>
+</tr>
+<tr>
+<td>/etc/X11</td>
+<td>与X windows有关的配置文件</td>
+</tr>
+<tr>
+<td>/lib</td>
+<td>执行或编译某些程序时用到的函数库</td>
+</tr>
+<tr>
+<td>/proc</td>
+<td>系统核心与执行程序所需要的一些信息。都是内存中的数据</td>
+</tr>
+<tr>
+<td>/root</td>
+<td>系统管理员根目录</td>
+</tr>
+<tr>
+<td>/sbin</td>
+<td>系统管理常用的程序</td>
+</tr>
+<tr>
+<td>/tmp</td>
+<td>存放临时文件的地方</td>
+</tr>
+<tr>
+<td>/usr</td>
+<td>存放系统信息，用来存放程序与指令。类似windows下的program  flies</td>
+</tr>
+</tbody>
+</table>
+<p>其中重点需要掌握的是/etc目录和/proc目录。</p>
+    </div>
+    <div class="read-more">
+      <a href="/2016/03/28/%E8%BF%90%E7%BB%B4%E4%BA%BA%E5%91%98%E5%B8%B8%E7%94%A8%E7%9A%84Linux%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2016/03/23/%E4%BA%8B%E5%8A%A1Transaction/">事务Transaction</a></h1>
@@ -800,152 +891,6 @@ SQL&gt; select * from t1;
     </div>
     <div class="read-more">
       <a href="/2016/03/16/%E5%9B%9E%E6%BB%9A%E6%AE%B5undo/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/03/16/%E9%87%8D%E5%81%9A%E6%97%A5%E5%BF%97%E5%92%8C%E6%97%A5%E5%BF%97%E6%8C%96%E6%8E%98/">重做日志和日志挖掘</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2016-03-16 </span>
-      <div class="post-category">
-          <a href="/categories/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93/"> Oracle数据库 </a>
-          </div>
-        <span class="more-meta"> 约 2404 字 </span>
-        <span class="more-meta"> 预计阅读 5 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="重做日志-redo-log">重做日志-Redo log</h2>
-<p><strong>首先给出参考资料：</strong></p>
-<p><a href="https://docs.oracle.com/database/121/ADMIN/onlineredo.htm#ADMIN007">1、Oracle官网-Managing the Redo Log</a></p>
-<h3 id="为什么需要redo-log">为什么需要redo log</h3>
-<ul>
-<li>内存中数据修改后，不必立即更新到磁盘&mdash;效率</li>
-<li>由日志完成数据的保护目的&mdash;效率</li>
-<li>其他副产品
-<ul>
-<li>数据恢复（备份集+归档日志）</li>
-<li>数据同步（DG，streams，goldengate）</li>
-<li>日志挖掘</li>
-</ul>
-</li>
-</ul>
-<h3 id="什么是redo-log">什么是Redo log</h3>
-<p>重做日志包含所有数据产生的历史改变记录。</p>
-<p>重做日志文件通常用于</p>
-<ul>
-<li>恢复</li>
-<li>日志挖掘</li>
-<li>流</li>
-<li>数据库产生的每个改动
-<ul>
-<li>写入数据块缓冲之前，先写入redo log buffer &ndash;内存</li>
-<li>写入数据文件之前先写入日志文件 &ndash;数据文件</li>
-</ul>
-</li>
-<li>当提交后，redo log buffer被刷入redo log files</li>
-</ul>
-<h3 id="关于vlog视图">关于v$log视图</h3>
-<p>v$log从控制文件中显示日志文件的信息。可参考官网资料<a href="https://docs.oracle.com/database/121/REFRN/GUID-FCD3B70B-7B98-40D8-98AB-9F6A85E69F57.htm#REFRN30127">v$log</a></p>
-<table>
-<thead>
-<tr>
-<th>Column</th>
-<th>Datatype</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>GROUP#</td>
-<td>NUMBER</td>
-<td>Log group number</td>
-</tr>
-<tr>
-<td>THREAD#</td>
-<td>NUMBER</td>
-<td>Log thread number</td>
-</tr>
-<tr>
-<td>SEQUENCE#</td>
-<td>NUMBER</td>
-<td>Log sequence number</td>
-</tr>
-<tr>
-<td>BYTES</td>
-<td>NUMBER</td>
-<td>Size of the log (in bytes)</td>
-</tr>
-<tr>
-<td>BLOCKSIZE</td>
-<td>NUMBER</td>
-<td>Block size of the logfile (512 or 4096)</td>
-</tr>
-<tr>
-<td>MEMBERS</td>
-<td>NUMBER</td>
-<td>Number of members in the log group</td>
-</tr>
-<tr>
-<td>ARCHIVED</td>
-<td>VARCHAR2(3)</td>
-<td>Archive status (<code>YES</code>) or (<code>NO</code>)</td>
-</tr>
-<tr>
-<td>STATUS</td>
-<td>VARCHAR2(16)</td>
-<td>UNUSED,CURRENT,ACTIVE,CLEARING,CLEARING_CURRENT,INACTIVE</td>
-</tr>
-<tr>
-<td>FIRST_CHANGE#</td>
-<td>NUMBER</td>
-<td>Lowest system change number (SCN) in the log</td>
-</tr>
-<tr>
-<td>FIRST_TIME</td>
-<td>DATE</td>
-<td>Time of the first SCN in the log</td>
-</tr>
-<tr>
-<td>NEXT_CHANGE#</td>
-<td>NUMBER</td>
-<td>Highest change number (SCN) in the log. When <code>STATUS=CURRENT</code>, <code>NEXT_CHANGE#</code>is set to the highest possible SCN, 281474976710655.</td>
-</tr>
-<tr>
-<td>NEXT_TIME</td>
-<td>DATE</td>
-<td>Time of the highest SCN in the log. When <code>STATUS=CURRENT</code>, <code>NEXT_TIME</code> is set to<code>NULL</code>.</td>
-</tr>
-<tr>
-<td>CON_ID</td>
-<td>NUMBER</td>
-<td>0，1，n三种情况</td>
-</tr>
-</tbody>
-</table>
-<p>日志文件的六种状态UNUSED,CURRENT,ACTIVE,CLEARING,CLEARING_CURRENT,INACTIVE代表的意思分别如下所述：</p>
-<ul>
-<li><strong>UNUSED</strong> - Online redo log has never been written to. This is the state of a redo log that was just added, or just after a <em>RESETLOGS</em>, when it is not the current redo log.</li>
-<li><strong>CURRENT</strong> - Current redo log. This implies that the redo log is active. The redo log could be open or closed.</li>
-<li><strong>ACTIVE</strong> - Log is active but is not the current log. It is needed for crash recovery. It may be in use for block recovery. It may or may not be archived.</li>
-<li><strong>CLEARING</strong> - Log is being re-created as an empty log after an <code>ALTER DATABASE CLEAR LOGFILE</code> statement. After the log is cleared, the status changes to <code>UNUSED</code>.</li>
-<li><strong>CLEARING_CURRENT</strong> - Current log is being cleared of a closed thread. The log can stay in this status if there is some failure in the switch such as an I/O error writing the new log header.</li>
-<li><strong>INACTIVE</strong> - Log is no longer needed for instance recovery. It may be in use for media recovery. It may or may not be archived.</li>
-</ul>
-<h3 id="lgwr如何重复使用redo-log-files">LGWR如何重复使用redo log files</h3>
-<p><img src="https://flowsnow.oss-cn-shanghai.aliyuncs.com/history/Oracle-Reuse%20of%20Redo%20Log%20Files%20by%20LGWR.gif" alt="Figure 11-1 Reuse of Redo Log Files by LGWR"></p>
-<p>上图就是Oracle LGWR进程向redo log files中写入redo记录的过程，可见，Oracle数据库每次只是用一个redo log file来存储redo log buffer中的redo记录。LGWR正在写入的那个redo log file就是current redo log file。</p>
-<p>可用于实例恢复的redo log files就是active redo log files。</p>
-<p>不再用于实例恢复的redo log files就是inactive redo log files。</p>
-<p>如果数据库当前是Archivelog模式，那么直到有一个后台归档进程ARCn已经归档成功，数据库才能重用或者覆盖active online log file。</p>
-<p>如果数据库当前是NoArchivelog模式，当最后一个redo log file写满的时候，LGWR会继续按顺序覆盖下一个inactive redo log file。</p>
-    </div>
-    <div class="read-more">
-      <a href="/2016/03/16/%E9%87%8D%E5%81%9A%E6%97%A5%E5%BF%97%E5%92%8C%E6%97%A5%E5%BF%97%E6%8C%96%E6%8E%98/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

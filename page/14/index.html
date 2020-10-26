@@ -45,7 +45,7 @@
 <meta property="og:description" content="关注Python、Goalng的web后端、DevOps等领域" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suncle.me/" />
-<meta property="og:updated_time" content="2020-09-25T13:25:35+08:00" />
+<meta property="og:updated_time" content="2020-10-26T19:30:14+08:00" />
 <meta itemprop="name" content="Suncle&#39;s Blog">
 <meta itemprop="description" content="关注Python、Goalng的web后端、DevOps等领域">
 <meta name="twitter:card" content="summary"/>
@@ -115,6 +115,50 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2016/02/19/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%AF%B9%E8%B1%A1/">Oracle数据库的对象</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-02-19 </span>
+      <div class="post-category">
+          <a href="/categories/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93/"> Oracle数据库 </a>
+          </div>
+        <span class="more-meta"> 约 728 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>查看oracle数据库中的所有对象</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">select distinct object_type from dba_objects; /*distinct??*/
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>dba_objects是存放数据库对象的一个视图</p>
+</blockquote>
+<p><strong>schema</strong>：数据库中一个对象的合集称为一个schema，它的名字和拥有这些对象的用户名相同。&mdash;比如scott用户和它下面的表统一称为一个schema</p>
+<p>下面分别介绍一下Oracle数据库中的各个对象</p>
+<h2 id="1表">1、表</h2>
+<h3 id="表-段segment">表-段（segment）</h3>
+<p>段是表物理化的过程，在Oracle数据库里只要是分配了存储空间的对象，都可以叫做段。</p>
+<p>CLOB是内置类型，它将字符大对象 (Character Large Object) 存储为数据库表某一行中的一个列值。</p>
+<h3 id="表-分区partition">表-分区（partition）</h3>
+<p>便于对表的管理。</p>
+<p>对分区的具体操作如下图：</p>
+<p><img src="https://flowsnow.oss-cn-shanghai.aliyuncs.com/history/Oracle-Oracle%E8%A1%A8%E5%88%86%E5%8C%BA%E7%9A%84%E6%93%8D%E4%BD%9C.jpg" alt=""></p>
+    </div>
+    <div class="read-more">
+      <a href="/2016/02/19/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%AF%B9%E8%B1%A1/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2016/02/06/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%96%87%E4%BB%B6%E4%BB%A5%E5%8F%8AOracle%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84/">Oracle数据库的文件以及Oracle体系架构</a></h1>
@@ -1600,34 +1644,6 @@ BROADCAST=192.168.118.255
     </div>
     <div class="read-more">
       <a href="/2016/01/11/Sublime-Text-3%E8%A7%A3%E5%86%B3%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/01/10/Linux-vi%E7%9A%84%E4%BD%BF%E7%94%A8/">Linux vi的使用</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2016-01-10 </span>
-      <div class="post-category">
-          <a href="/categories/Linux/"> Linux </a>
-          </div>
-        <span class="more-meta"> 约 944 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="linux-vi的使用">Linux vi的使用</h1>
-<hr>
-<h2 id="vi模式转换">vi模式转换</h2>
-<p>经常使用的三种基本模式：命令模式(Command Mode)，输入模式(Input Mode)，末行模式(Last Line Mode)，其他的9种模式不做介绍，很少会使用。</p>
-<p>三种基本模式的相互转换如下图：</p>
-<p><img src="https://flowsnow.oss-cn-shanghai.aliyuncs.com/history/Flowsnowvi%E6%A8%A1%E5%BC%8F%E8%BD%AC%E6%8D%A2.jpg" alt="vi模式转换"></p>
-    </div>
-    <div class="read-more">
-      <a href="/2016/01/10/Linux-vi%E7%9A%84%E4%BD%BF%E7%94%A8/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

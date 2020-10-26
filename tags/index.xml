@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Suncle&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 25 Sep 2020 13:25:35 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 26 Oct 2020 19:30:14 +0800</lastBuildDate>
     
 	<atom:link href="https://suncle.me/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>旅游</title>
+      <link>https://suncle.me/tags/%E6%97%85%E6%B8%B8/</link>
+      <pubDate>Mon, 26 Oct 2020 19:30:14 +0800</pubDate>
+      
+      <guid>https://suncle.me/tags/%E6%97%85%E6%B8%B8/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>git</title>

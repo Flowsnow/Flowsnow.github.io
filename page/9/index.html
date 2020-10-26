@@ -45,7 +45,7 @@
 <meta property="og:description" content="关注Python、Goalng的web后端、DevOps等领域" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suncle.me/" />
-<meta property="og:updated_time" content="2020-09-25T13:25:35+08:00" />
+<meta property="og:updated_time" content="2020-10-26T19:30:14+08:00" />
 <meta itemprop="name" content="Suncle&#39;s Blog">
 <meta itemprop="description" content="关注Python、Goalng的web后端、DevOps等领域">
 <meta name="twitter:card" content="summary"/>
@@ -115,6 +115,55 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2017/04/18/JavaScript%E5%9F%BA%E7%A1%80/">JavaScript基础</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-04-18 </span>
+      <div class="post-category">
+          <a href="/categories/JavaScript/"> JavaScript </a>
+          </div>
+        <span class="more-meta"> 约 1752 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>JavaScript 从 Java 中借用其大部分语法，但也受 Awk，Perl 和 Python的影响。因此本篇博客基于对Java和Python的认识来记录JavaScript的差异点。</p>
+<h1 id="0x00-letvarconst">[0x00] let,var,const</h1>
+<ul>
+<li>
+<p>var 的方式是为了兼容旧版。因为var定义变量， 会提升作用域，var定义的变量，都是全局作用域。</p>
+</li>
+<li>
+<p>let 是ES6引入的，如果没有特殊原因， 变量都应该是用let来定义</p>
+</li>
+<li>
+<p>const是定义常量</p>
+</li>
+</ul>
+<h1 id="0x01-javascript数据类型">[0x01] JavaScript数据类型</h1>
+<p>JavaScript总共有六种基本数据类型</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Boolean">Boolean</a>.  布尔值，<code>true</code> 和 <code>false</code>.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Glossary/null">null</a>. 一个表明 null 值的特殊关键字。 JavaScript 是大小写敏感的，因此 <code>null </code>与 <code>Null</code>、<code>NULL</code>或其他变量完全不同。</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Glossary/undefined">undefined</a>.  变量未定义时的属性。</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Number">Number</a>.  表示数字，例如： <code>42</code> 或者 <code>3.14159。</code></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Glossary/String">String</a>.  表示字符串，例如：&ldquo;Howdy&rdquo;</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Symbol">Symbol</a> ( 在 ECMAScript 6 中新添加的类型).。一种数据类型，它的实例是唯一且不可改变的。</li>
+</ul>
+<blockquote>
+<p>在bool运算中，null和undefined都等价于false</p>
+</blockquote>
+<p>除了六种基本数据类型之外，还有复合的object类型。</p>
+    </div>
+    <div class="read-more">
+      <a href="/2017/04/18/JavaScript%E5%9F%BA%E7%A1%80/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2017/04/14/Python-pymysql/">Python-pymysql</a></h1>
@@ -677,64 +726,6 @@ make install
     </div>
     <div class="read-more">
       <a href="/2017/03/15/Python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2017/03/08/Python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/">Python面向对象基础</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-03-08 </span>
-      <div class="post-category">
-          <a href="/categories/Python/"> Python </a>
-          </div>
-        <span class="more-meta"> 约 4970 字 </span>
-        <span class="more-meta"> 预计阅读 10 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="类的定义">类的定义</h1>
-<p>类的定义的语法</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">ClassName</span><span class="p">:</span>
-    <span class="o">&lt;</span><span class="n">statement</span><span class="o">-</span><span class="mi">1</span><span class="o">&gt;</span>
-    <span class="o">.</span>
-    <span class="o">.</span>
-    <span class="o">.</span>
-    <span class="o">&lt;</span><span class="n">statement</span><span class="o">-</span><span class="n">N</span><span class="o">&gt;</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>示例代码</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Door</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">status</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">number</span> <span class="o">=</span> <span class="n">number</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">status</span>
-</code></pre></td></tr></table>
-</div>
-</div>
-    </div>
-    <div class="read-more">
-      <a href="/2017/03/08/Python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
