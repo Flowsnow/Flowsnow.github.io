@@ -44,13 +44,6 @@
   </url>
   
   <url>
-    <loc>https://suncle.me/2020/12/09/tool-recommendation-chrome-browser-extension/</loc>
-    <lastmod>2020-12-09T11:06:53+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://suncle.me/tags/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2020-12-09T11:06:53+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -59,6 +52,13 @@
   
   <url>
     <loc>https://suncle.me/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2020-12-09T11:06:53+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://suncle.me/2020/12/09/tool-recommendation-chrome-browser-extension/</loc>
     <lastmod>2020-12-09T11:06:53+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
