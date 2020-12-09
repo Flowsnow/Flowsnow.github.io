@@ -10,28 +10,56 @@
   
   <url>
     <loc>https://suncle.me/categories/</loc>
-    <lastmod>2020-10-26T19:30:14+08:00</lastmod>
+    <lastmod>2020-12-09T11:06:53+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://suncle.me/tags/chrome/</loc>
+    <lastmod>2020-12-09T11:06:53+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://suncle.me/post/</loc>
-    <lastmod>2020-10-26T19:30:14+08:00</lastmod>
+    <lastmod>2020-12-09T11:06:53+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://suncle.me/</loc>
-    <lastmod>2020-10-26T19:30:14+08:00</lastmod>
+    <lastmod>2020-12-09T11:06:53+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://suncle.me/tags/</loc>
-    <lastmod>2020-10-26T19:30:14+08:00</lastmod>
+    <lastmod>2020-12-09T11:06:53+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://suncle.me/2020/12/09/tool-recommendation-chrome-browser-extension/</loc>
+    <lastmod>2020-12-09T11:06:53+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://suncle.me/tags/%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2020-12-09T11:06:53+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://suncle.me/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2020-12-09T11:06:53+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -1242,13 +1270,6 @@
   
   <url>
     <loc>https://suncle.me/2018/02/01/Benchmarking-Tencent-CLS-with-ab-and-wrk/</loc>
-    <lastmod>2018-02-01T18:46:45+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://suncle.me/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/</loc>
     <lastmod>2018-02-01T18:46:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -2796,13 +2817,6 @@
   
   <url>
     <loc>https://suncle.me/2016/01/11/Sublime-Text-3%E8%A7%A3%E5%86%B3%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/</loc>
-    <lastmod>2016-01-11T10:50:22+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://suncle.me/tags/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2016-01-11T10:50:22+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

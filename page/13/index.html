@@ -46,7 +46,7 @@
 <meta property="og:description" content="关注Python、Goalng的web后端、DevOps等领域" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suncle.me/" />
-<meta property="og:updated_time" content="2020-10-26T19:30:14+08:00" />
+<meta property="og:updated_time" content="2020-12-09T11:06:53+08:00" />
 <meta itemprop="name" content="Suncle&#39;s Blog">
 <meta itemprop="description" content="关注Python、Goalng的web后端、DevOps等领域">
 <meta name="twitter:card" content="summary"/>
@@ -116,6 +116,371 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2016/03/16/%E5%9B%9E%E6%BB%9A%E6%AE%B5undo/">回滚段undo</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-03-16 </span>
+      <div class="post-category">
+          <a href="/categories/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93/"> Oracle数据库 </a>
+          </div>
+        <span class="more-meta"> 约 2264 字 </span>
+        <span class="more-meta"> 预计阅读 5 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <hr>
+<h2 id="undo的作用">Undo的作用</h2>
+<ul>
+<li>数据的回滚</li>
+<li>一致性读</li>
+<li>表的闪回（事务，查询的闪回..）</li>
+<li>失败会话的恢复</li>
+</ul>
+<h2 id="回滚rollback操作">回滚rollback操作</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">SQL&gt; archive log list;
+ORA-01031: 权限不足
+SQL&gt; conn /as sysdba
+已连接。
+SQL&gt; archive log list;
+数据库日志模式            存档模式
+自动存档             启用
+存档终点            USE_DB_RECOVERY_FILE_DEST
+最早的联机日志序列     45
+下一个存档日志序列   47
+当前日志序列           47
+SQL&gt; create table t1(id int);
+
+表已创建。
+
+SQL&gt; select * from t1;
+
+未选定行
+
+SQL&gt; insert into t1 values(&#39;1&#39;);
+
+已创建 1 行。
+
+SQL&gt; insert into t1 values(&#39;2&#39;);
+
+已创建 1 行。
+
+SQL&gt; rollback;
+
+回退已完成。
+
+SQL&gt; select * from t1;
+
+未选定行
+
+SQL&gt; desc t1;
+ 名称                                      是否为空? 类型
+ ----------------------------------------- -------- ----------------------------
+
+ ID                                                 NUMBER(38)
+
+SQL&gt; select * from t1;
+
+未选定行
+
+SQL&gt; insert into t1 values(1);
+
+已创建 1 行。
+
+SQL&gt; insert into t1 values(2);
+
+已创建 1 行。
+
+SQL&gt; select * from t1;
+
+        ID
+----------
+         1
+         2
+
+SQL&gt; rollback;
+
+回退已完成。
+
+SQL&gt; select * from t1;
+
+未选定行
+
+SQL&gt; archive log list;
+数据库日志模式            存档模式
+自动存档             启用
+存档终点            USE_DB_RECOVERY_FILE_DEST
+最早的联机日志序列     45
+下一个存档日志序列   47
+当前日志序列           47
+SQL&gt; shutdown immediate;
+数据库已经关闭。
+已经卸载数据库。
+ORACLE 例程已经关闭。
+SQL&gt; startup mount;
+ORACLE 例程已经启动。
+
+Total System Global Area 3307048960 bytes
+Fixed Size                  2180264 bytes
+Variable Size            1828719448 bytes
+Database Buffers         1459617792 bytes
+Redo Buffers               16531456 bytes
+数据库装载完毕。
+SQL&gt; alter database noarchivelog;
+alter database noarchivelog
+*
+第 1 行出现错误:
+ORA-38774: 无法禁用介质恢复 - 闪回数据库已启用
+
+
+SQL&gt; alter database flashback off;
+
+数据库已更改。
+
+SQL&gt;
+SQL&gt; alter database noarchivelog;
+
+数据库已更改。
+
+SQL&gt; alter database open;
+
+数据库已更改。
+
+SQL&gt; archive log list;
+数据库日志模式             非存档模式
+自动存档             禁用
+存档终点            USE_DB_RECOVERY_FILE_DEST
+最早的联机日志序列     45
+当前日志序列           47
+SQL&gt; select * from t1;
+
+未选定行
+
+SQL&gt; insert into t1 values(1);
+
+已创建 1 行。
+
+SQL&gt; insert into t1 values(2);
+
+已创建 1 行。
+
+SQL&gt; select * from t1;
+
+        ID
+----------
+         1
+         2
+
+SQL&gt; rollback;
+
+回退已完成。
+
+SQL&gt; select * from t1;
+
+未选定行
+
+SQL&gt; insert into t1 values(1);
+
+已创建 1 行。
+
+SQL&gt; insert into t1 values(2);
+
+已创建 1 行。
+
+SQL&gt; commit;
+
+提交完成。
+
+SQL&gt; rollback;
+
+回退已完成。
+
+SQL&gt; select * from t1;
+
+        ID
+----------
+         1
+         2
+</code></pre></td></tr></table>
+</div>
+</div><p>可见rollback操作和当前数据库 归档模式并没有关系，只和commit操作有关，一旦commit就无法回滚。</p>
+<p>如果没有指定 rollback 到哪一个保存点savepoint上，就意味着全部Rollback，而不是只是rollback一条操作。</p>
+    </div>
+    <div class="read-more">
+      <a href="/2016/03/16/%E5%9B%9E%E6%BB%9A%E6%AE%B5undo/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2016/03/16/%E9%87%8D%E5%81%9A%E6%97%A5%E5%BF%97%E5%92%8C%E6%97%A5%E5%BF%97%E6%8C%96%E6%8E%98/">重做日志和日志挖掘</a></h1>
@@ -991,92 +1356,6 @@ ORA-00942: 表或视图不存在
     </div>
     <div class="read-more">
       <a href="/2016/02/19/%E5%A4%8D%E6%9D%82%E4%B8%80%E7%82%B9%E7%9A%84SQL%E8%AF%AD%E5%8F%A5/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/02/19/PLSQL/">plsql</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2016-02-19 </span>
-      <div class="post-category">
-          <a href="/categories/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93/"> Oracle数据库 </a>
-          </div>
-        <span class="more-meta"> 约 884 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p><strong>PL/SQL</strong></p>
-<p>PL/SQL也是一种程序语言，叫做<strong>过程化SQL语言</strong>（Procedural Language/SQL）。PL/SQL是Oracle数据库对SQL语句的扩展。在普通SQL语句的使用上增加了编程语言的特点，所以PL/SQL就是把数据操作和查询语句组织在PL/SQL代码的过程性单元中，通过逻辑判断、循环等操作实现复杂的功能或者计算的程序语言。</p>
-<ul>
-<li>
-<p>SQL是一种集合性语言</p>
-</li>
-<li>
-<p>PL/SQL语句效率比SQL低，尽量用SQL。</p>
-</li>
-</ul>
-<p><strong>PL/SQL循环</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">SQL&gt; create table t(id int);
-
-表已创建。
-
-SQL&gt; begin
-  2  for i in 1..100 loop
-  3  insert into t values(i);
-  4  end loop;
-  5  end;
-  6  /
-
-PL/SQL 过程已成功完成。
-
-SQL&gt; select count(*) from t;
-
-  COUNT(*)
-----------
-       100
-
-SQL&gt; commit;
-
-提交完成。
-
-</code></pre></td></tr></table>
-</div>
-</div>
-    </div>
-    <div class="read-more">
-      <a href="/2016/02/19/PLSQL/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

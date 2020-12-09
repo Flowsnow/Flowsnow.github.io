@@ -46,7 +46,7 @@
 <meta property="og:description" content="关注Python、Goalng的web后端、DevOps等领域" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suncle.me/" />
-<meta property="og:updated_time" content="2020-10-26T19:30:14+08:00" />
+<meta property="og:updated_time" content="2020-12-09T11:06:53+08:00" />
 <meta itemprop="name" content="Suncle&#39;s Blog">
 <meta itemprop="description" content="关注Python、Goalng的web后端、DevOps等领域">
 <meta name="twitter:card" content="summary"/>
@@ -116,6 +116,92 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2016/02/19/PLSQL/">plsql</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-02-19 </span>
+      <div class="post-category">
+          <a href="/categories/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93/"> Oracle数据库 </a>
+          </div>
+        <span class="more-meta"> 约 884 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p><strong>PL/SQL</strong></p>
+<p>PL/SQL也是一种程序语言，叫做<strong>过程化SQL语言</strong>（Procedural Language/SQL）。PL/SQL是Oracle数据库对SQL语句的扩展。在普通SQL语句的使用上增加了编程语言的特点，所以PL/SQL就是把数据操作和查询语句组织在PL/SQL代码的过程性单元中，通过逻辑判断、循环等操作实现复杂的功能或者计算的程序语言。</p>
+<ul>
+<li>
+<p>SQL是一种集合性语言</p>
+</li>
+<li>
+<p>PL/SQL语句效率比SQL低，尽量用SQL。</p>
+</li>
+</ul>
+<p><strong>PL/SQL循环</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">SQL&gt; create table t(id int);
+
+表已创建。
+
+SQL&gt; begin
+  2  for i in 1..100 loop
+  3  insert into t values(i);
+  4  end loop;
+  5  end;
+  6  /
+
+PL/SQL 过程已成功完成。
+
+SQL&gt; select count(*) from t;
+
+  COUNT(*)
+----------
+       100
+
+SQL&gt; commit;
+
+提交完成。
+
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+    <div class="read-more">
+      <a href="/2016/02/19/PLSQL/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2016/02/19/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%AF%B9%E8%B1%A1/">Oracle数据库的对象</a></h1>
@@ -1622,29 +1708,6 @@ BROADCAST=192.168.118.255
     </div>
     <div class="read-more">
       <a href="/2016/01/14/Linux%E7%9A%84%E6%96%87%E4%BB%B6%E5%92%8C%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%AE%A1%E7%90%86/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/01/11/Sublime-Text-3%E8%A7%A3%E5%86%B3%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/">Sublime Text 3解决中文乱码</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2016-01-11 </span>
-      <div class="post-category">
-          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"> 工具使用 </a>
-          </div>
-        <span class="more-meta"> 约 482 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>众所周知，Sublime Text 3（下面简称ST3）的默认编码是utf-8，因此需要把GB2312和GBK编码转换成utf-8。在Sublime Text 2中大家解决中文乱码的方法都是先装好Package Control，然后再通过这个安装ConvertToUTF8的Package。</p>
-    </div>
-    <div class="read-more">
-      <a href="/2016/01/11/Sublime-Text-3%E8%A7%A3%E5%86%B3%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

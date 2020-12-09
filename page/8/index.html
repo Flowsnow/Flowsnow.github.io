@@ -46,7 +46,7 @@
 <meta property="og:description" content="关注Python、Goalng的web后端、DevOps等领域" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suncle.me/" />
-<meta property="og:updated_time" content="2020-10-26T19:30:14+08:00" />
+<meta property="og:updated_time" content="2020-12-09T11:06:53+08:00" />
 <meta itemprop="name" content="Suncle&#39;s Blog">
 <meta itemprop="description" content="关注Python、Goalng的web后端、DevOps等领域">
 <meta name="twitter:card" content="summary"/>
@@ -116,6 +116,34 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2017/09/25/%E8%AF%A6%E8%A7%A3supervisor%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/">详解supervisor进程管理</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-09-25 </span>
+      <div class="post-category">
+          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"> 工具使用 </a>
+          </div>
+        <span class="more-meta"> 约 5470 字 </span>
+        <span class="more-meta"> 预计阅读 11 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h1 id="supervisor">supervisor</h1>
+<p>使用Python编写的进程管理程序supervisor来管理Python程序那是最合适不过了，supervisor基于CS架构，主要有以下两个组成部分：</p>
+<ol>
+<li><strong>supervisord</strong>：supervisord是supervisor的服务端程序。负责启动子程序，应答客户端命令，子程序日志记录，对进程变化发送事件通知等</li>
+<li><strong>supervisorctl：</strong> 客户端命令行工具，可以连接服务器端，进行进程的启动、关闭、重启、状态查看等。重要的一点是，supervisorctl不仅可以连接到本机上的supervisord，还可以连接到远程的supervisord，当然在本机上面是通过UNIX socket连接的，远程是通过TCP socket连接的。supervisorctl和supervisord之间的通信，是通过xml_rpc完成的。 相应的配置在[supervisorctl]块里面</li>
+</ol>
+    </div>
+    <div class="read-more">
+      <a href="/2017/09/25/%E8%AF%A6%E8%A7%A3supervisor%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2017/09/07/Python%E6%97%B6%E9%97%B4%E6%A8%A1%E5%9D%97%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93/">Python时间模块常用操作总结</a></h1>
@@ -487,94 +515,6 @@
     </div>
     <div class="read-more">
       <a href="/2017/04/27/react%E5%9F%BA%E7%A1%80/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2017/04/18/JavaScript%E5%87%BD%E6%95%B0%E5%92%8C%E7%B1%BB/">JavaScript函数和类</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-04-18 </span>
-      <div class="post-category">
-          <a href="/categories/JavaScript/"> JavaScript </a>
-          </div>
-        <span class="more-meta"> 约 3294 字 </span>
-        <span class="more-meta"> 预计阅读 7 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="javascript函数">JavaScript函数</h1>
-<h2 id="函数定义">函数定义</h2>
-<p>一个<strong>函数定义</strong>（也称为<strong>函数声明</strong>，或<strong>函数语句</strong>）由一系列的<a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Statements/function"><code>函数</code></a>关键字组成, 依次为：</p>
-<ul>
-<li>函数的名称。</li>
-<li>函数参数列表，包围在括号( )中并由逗号( , )区隔。</li>
-<li>函数功能，包围在花括号{ }中，用于定义函数功能的一些JavaScript语句。</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>函数参数传递时，如果是传值则是传形参。如果是传对象，则是传引用（函数内部对对象的改变对外部是可见的）。</p>
-<h2 id="函数表达式">函数表达式</h2>
-<p>虽然上面的函数声明在语法上是一个语句，但函数也可以由<strong>函数表达式</strong>创建。这样的函数可以是<strong>匿名</strong>的；它不必有一个名称。例如，函数<code>square</code>也可这样来定义：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// 第一种定义方式
-</span><span class="c1"></span><span class="kr">const</span> <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c1">// 第二种定义方式
-</span><span class="c1"></span><span class="kr">const</span> <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">_add</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>函数表达式可以直接调用：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">let</span> <span class="nx">val</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span>
-<span class="p">}(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">val</span><span class="p">);</span>  <span class="c1">// 输出4
-</span></code></pre></td></tr></table>
-</div>
-</div><p>函数表达式就是把一个函数赋值给变量或者常量</p>
-<p><strong>什么时候使用函数表达式？什么时候使用命名方式的函数表达式？</strong></p>
-    </div>
-    <div class="read-more">
-      <a href="/2017/04/18/JavaScript%E5%87%BD%E6%95%B0%E5%92%8C%E7%B1%BB/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

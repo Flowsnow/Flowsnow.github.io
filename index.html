@@ -46,7 +46,7 @@
 <meta property="og:description" content="关注Python、Goalng的web后端、DevOps等领域" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suncle.me/" />
-<meta property="og:updated_time" content="2020-10-26T19:30:14+08:00" />
+<meta property="og:updated_time" content="2020-12-09T11:06:53+08:00" />
 <meta itemprop="name" content="Suncle&#39;s Blog">
 <meta itemprop="description" content="关注Python、Goalng的web后端、DevOps等领域">
 <meta name="twitter:card" content="summary"/>
@@ -116,6 +116,34 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2020/12/09/tool-recommendation-chrome-browser-extension/">Tool Recommendation Chrome Browser Extension</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-12-09 </span>
+      <div class="post-category">
+          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"> 工具使用 </a>
+          </div>
+        <span class="more-meta"> 约 2193 字 </span>
+        <span class="more-meta"> 预计阅读 5 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>最近有朋友问我，有没有什么可以提升效率的chrome插件推荐一下。我看了一下我的插件库，好用的还真不少。既然要推荐给一个人，还不如整理出来，分享给所有需要的人。毕竟，极致利他才能最终利己嘛。</p>
+<p>话不多说，下面一个一个的推荐，并且附上效果截图。（注意，一定要看完，图中隐藏着很多人梦寐以求的大杀器！！！）</p>
+<h2 id="技术文章一键分发openwrite助手">技术文章一键分发：openWrite助手</h2>
+<p>安全认证简书、博客园、知乎、开源中国、掘金、SegmentFault等平台，一键群发文章。</p>
+<p>免费版只有有限的分发次数，但是为了效率，这点费用还是很值得的。</p>
+<p><img src="https://suncle-public.oss-cn-shenzhen.aliyuncs.com/pics/article/efficiency-tools-chrome-extension/open-write.jpg" alt=""></p>
+    </div>
+    <div class="read-more">
+      <a href="/2020/12/09/tool-recommendation-chrome-browser-extension/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2020/10/26/new-year-day-go-to-emeishan/">元旦去峨眉山吧，人间值得</a></h1>
@@ -359,56 +387,6 @@
     </div>
     <div class="read-more">
       <a href="/2019/11/13/Lu-Rong-behavioral-finance/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2019/11/13/http-3xx-status-code/">一次奇怪的http状态码改变</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-11-13 </span>
-      <div class="post-category">
-          <a href="/categories/%E6%80%BB%E7%BB%93%E6%84%9F%E6%82%9F/"> 总结感悟 </a>
-          </div>
-        <span class="more-meta"> 约 1573 字 </span>
-        <span class="more-meta"> 预计阅读 4 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>最近将一个很久没有更新的部署在物理机上的一个老服务迁移到k8s时，发现在gitlab ci跑pytest的过程中出现以下报错：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">___________________________ HelloTests.test_redirect ___________________________
-
-self = &lt;tests.test_hello.HelloTests testMethod=test_redirect&gt;
-
-    def test_redirect(self):
-        resp = self.get(&#39;/api/hello&#39;)
-&gt;       self.assertEqual(http.HTTPStatus.MOVED_PERMANENTLY.value, resp.status_code)
-E       AssertionError: 301 != 308
-
-tests/test_hello.py:18: AssertionError
-</code></pre></td></tr></table>
-</div>
-</div><p>按照python系的习惯，一般而言，我们习惯在接口最后加上一个slash，因此会将所有不带slash的接口301重定向到带slash。但是这一次提示重定向的状态码是308。</p>
-    </div>
-    <div class="read-more">
-      <a href="/2019/11/13/http-3xx-status-code/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

@@ -46,7 +46,7 @@
 <meta property="og:description" content="关注Python、Goalng的web后端、DevOps等领域" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suncle.me/" />
-<meta property="og:updated_time" content="2020-10-26T19:30:14+08:00" />
+<meta property="og:updated_time" content="2020-12-09T11:06:53+08:00" />
 <meta itemprop="name" content="Suncle&#39;s Blog">
 <meta itemprop="description" content="关注Python、Goalng的web后端、DevOps等领域">
 <meta name="twitter:card" content="summary"/>
@@ -116,6 +116,73 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2016/12/23/Python%E8%A7%A3%E6%9E%84%E4%B8%8E%E5%B0%81%E8%A3%85/">Python解构与封装</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-12-23 </span>
+      <div class="post-category">
+          <a href="/categories/Python/"> Python </a>
+          </div>
+        <span class="more-meta"> 约 1006 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h1 id="python解构与封装">Python解构与封装</h1>
+<h2 id="提出问题">提出问题</h2>
+<p>先看以下代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">tmp</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">tmp</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>代码的输出结果是：2 1</p>
+<p>再看以下代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>代码的输出结果是：2 1</p>
+<p><code>x, y = y, x</code>这段代码背后的含义就是解构和封装</p>
+    </div>
+    <div class="read-more">
+      <a href="/2016/12/23/Python%E8%A7%A3%E6%9E%84%E4%B8%8E%E5%B0%81%E8%A3%85/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2016/12/13/filling-holes-series-python-workbook/">【填坑系列】Python习题集</a></h1>
@@ -775,110 +842,6 @@
     </div>
     <div class="read-more">
       <a href="/2016/07/08/sql%E8%AF%AD%E5%8F%A5%E4%B8%AD%E5%8A%A0%E5%8F%B7%E7%9A%84%E4%BD%9C%E7%94%A8/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/05/10/opencv%E7%9A%84Mat%E7%B1%BB%E5%9E%8B%E4%BB%A5%E5%8F%8A%E5%9F%BA%E6%9C%AC%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8/">OpenCV的Mat类型以及基本函数使用</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2016-05-10 </span>
-      <div class="post-category">
-          <a href="/categories/OpenCV/"> OpenCV </a>
-          </div>
-        <span class="more-meta"> 约 4052 字 </span>
-        <span class="more-meta"> 预计阅读 9 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="opencv的mat类型以及基本函数使用">OpenCV的Mat类型以及基本函数使用</h1>
-<h2 id="mat和iplimage的区别">Mat和IplImage的区别</h2>
-<h3 id="mat和iplimage的主要区别">Mat和IplImage的主要区别</h3>
-<p>在OpenCV中IplImage是表示一个图像的结构体，也是从OpenCV1.0到目前最为重要的一个结构；在之前的图像表示用IplImage，而且之前的OpenCV是用C语言编写的，提供的接口也是C语言接口。</p>
-<p>Mat是后来OpenCV封装的一个C++类，用来表示一个图像，和IplImage表示基本一致，但是Mat还添加了一些图像函数。</p>
-<h3 id="iplimage">IplImage</h3>
-<p>IplImage数据结构的定义在opencv\build\include\opencv2\core\types_c.h文件中。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">_IplImage</span>
-<span class="p">{</span>
-    <span class="kt">int</span>  <span class="n">nSize</span><span class="p">;</span>             <span class="cm">/* sizeof(IplImage) */</span>
-    <span class="kt">int</span>  <span class="n">ID</span><span class="p">;</span>                <span class="cm">/* version (=0)*/</span>
-    <span class="kt">int</span>  <span class="n">nChannels</span><span class="p">;</span>         <span class="cm">/* Most of OpenCV functions support 1,2,3 or 4 channels */</span>
-    <span class="kt">int</span>  <span class="n">alphaChannel</span><span class="p">;</span>      <span class="cm">/* Ignored by OpenCV */</span>
-    <span class="kt">int</span>  <span class="n">depth</span><span class="p">;</span>             <span class="cm">/* Pixel depth in bits: IPL_DEPTH_8U, IPL_DEPTH_8S, IPL_DEPTH_16S,
-</span><span class="cm">                               IPL_DEPTH_32S, IPL_DEPTH_32F and IPL_DEPTH_64F are supported.  */</span>
-    <span class="kt">char</span> <span class="n">colorModel</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>     <span class="cm">/* Ignored by OpenCV */</span>
-    <span class="kt">char</span> <span class="n">channelSeq</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>     <span class="cm">/* ditto */</span>
-    <span class="kt">int</span>  <span class="n">dataOrder</span><span class="p">;</span>         <span class="cm">/* 0 - interleaved color channels, 1 - separate color channels.
-</span><span class="cm">                               cvCreateImage can only create interleaved images */</span>
-    <span class="kt">int</span>  <span class="n">origin</span><span class="p">;</span>            <span class="cm">/* 0 - top-left origin,
-</span><span class="cm">                               1 - bottom-left origin (Windows bitmaps style).  */</span>
-    <span class="kt">int</span>  <span class="n">align</span><span class="p">;</span>             <span class="cm">/* Alignment of image rows (4 or 8).
-</span><span class="cm">                               OpenCV ignores it and uses widthStep instead.    */</span>
-    <span class="kt">int</span>  <span class="n">width</span><span class="p">;</span>             <span class="cm">/* Image width in pixels.                           */</span>
-    <span class="kt">int</span>  <span class="n">height</span><span class="p">;</span>            <span class="cm">/* Image height in pixels.                          */</span>
-    <span class="k">struct</span> <span class="nc">_IplROI</span> <span class="o">*</span><span class="n">roi</span><span class="p">;</span>    <span class="cm">/* Image ROI. If NULL, the whole image is selected. */</span>
-    <span class="k">struct</span> <span class="nc">_IplImage</span> <span class="o">*</span><span class="n">maskROI</span><span class="p">;</span>      <span class="cm">/* Must be NULL. */</span>
-    <span class="kt">void</span>  <span class="o">*</span><span class="n">imageId</span><span class="p">;</span>                 <span class="cm">/* &#34;           &#34; */</span>
-    <span class="k">struct</span> <span class="nc">_IplTileInfo</span> <span class="o">*</span><span class="n">tileInfo</span><span class="p">;</span>  <span class="cm">/* &#34;           &#34; */</span>
-    <span class="kt">int</span>  <span class="n">imageSize</span><span class="p">;</span>         <span class="cm">/* Image data size in bytes
-</span><span class="cm">                               (==image-&gt;height*image-&gt;widthStep
-</span><span class="cm">                               in case of interleaved data)*/</span>
-    <span class="kt">char</span> <span class="o">*</span><span class="n">imageData</span><span class="p">;</span>        <span class="cm">/* Pointer to aligned image data.         */</span>
-    <span class="kt">int</span>  <span class="n">widthStep</span><span class="p">;</span>         <span class="cm">/* Size of aligned image row in bytes.    */</span>
-    <span class="kt">int</span>  <span class="n">BorderMode</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>     <span class="cm">/* Ignored by OpenCV.                     */</span>
-    <span class="kt">int</span>  <span class="n">BorderConst</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>    <span class="cm">/* Ditto.                                 */</span>
-    <span class="kt">char</span> <span class="o">*</span><span class="n">imageDataOrigin</span><span class="p">;</span>  <span class="cm">/* Pointer to very origin of image data
-</span><span class="cm">                               (not necessarily aligned) -
-</span><span class="cm">                               needed for correct deallocation */</span>
-<span class="p">}</span>
-<span class="n">IplImage</span><span class="p">;</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>可见，IplImage是一个表示图像的结构体：C语言操作OpenCV的数据结构。地位等同于Mat，可以说是历史版本了。</p>
-    </div>
-    <div class="read-more">
-      <a href="/2016/05/10/opencv%E7%9A%84Mat%E7%B1%BB%E5%9E%8B%E4%BB%A5%E5%8F%8A%E5%9F%BA%E6%9C%AC%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

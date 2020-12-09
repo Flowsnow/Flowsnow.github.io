@@ -46,7 +46,7 @@
 <meta property="og:description" content="关注Python、Goalng的web后端、DevOps等领域" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suncle.me/" />
-<meta property="og:updated_time" content="2020-10-26T19:30:14+08:00" />
+<meta property="og:updated_time" content="2020-12-09T11:06:53+08:00" />
 <meta itemprop="name" content="Suncle&#39;s Blog">
 <meta itemprop="description" content="关注Python、Goalng的web后端、DevOps等领域">
 <meta name="twitter:card" content="summary"/>
@@ -116,6 +116,110 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2016/05/10/opencv%E7%9A%84Mat%E7%B1%BB%E5%9E%8B%E4%BB%A5%E5%8F%8A%E5%9F%BA%E6%9C%AC%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8/">OpenCV的Mat类型以及基本函数使用</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-05-10 </span>
+      <div class="post-category">
+          <a href="/categories/OpenCV/"> OpenCV </a>
+          </div>
+        <span class="more-meta"> 约 4052 字 </span>
+        <span class="more-meta"> 预计阅读 9 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h1 id="opencv的mat类型以及基本函数使用">OpenCV的Mat类型以及基本函数使用</h1>
+<h2 id="mat和iplimage的区别">Mat和IplImage的区别</h2>
+<h3 id="mat和iplimage的主要区别">Mat和IplImage的主要区别</h3>
+<p>在OpenCV中IplImage是表示一个图像的结构体，也是从OpenCV1.0到目前最为重要的一个结构；在之前的图像表示用IplImage，而且之前的OpenCV是用C语言编写的，提供的接口也是C语言接口。</p>
+<p>Mat是后来OpenCV封装的一个C++类，用来表示一个图像，和IplImage表示基本一致，但是Mat还添加了一些图像函数。</p>
+<h3 id="iplimage">IplImage</h3>
+<p>IplImage数据结构的定义在opencv\build\include\opencv2\core\types_c.h文件中。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">_IplImage</span>
+<span class="p">{</span>
+    <span class="kt">int</span>  <span class="n">nSize</span><span class="p">;</span>             <span class="cm">/* sizeof(IplImage) */</span>
+    <span class="kt">int</span>  <span class="n">ID</span><span class="p">;</span>                <span class="cm">/* version (=0)*/</span>
+    <span class="kt">int</span>  <span class="n">nChannels</span><span class="p">;</span>         <span class="cm">/* Most of OpenCV functions support 1,2,3 or 4 channels */</span>
+    <span class="kt">int</span>  <span class="n">alphaChannel</span><span class="p">;</span>      <span class="cm">/* Ignored by OpenCV */</span>
+    <span class="kt">int</span>  <span class="n">depth</span><span class="p">;</span>             <span class="cm">/* Pixel depth in bits: IPL_DEPTH_8U, IPL_DEPTH_8S, IPL_DEPTH_16S,
+</span><span class="cm">                               IPL_DEPTH_32S, IPL_DEPTH_32F and IPL_DEPTH_64F are supported.  */</span>
+    <span class="kt">char</span> <span class="n">colorModel</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>     <span class="cm">/* Ignored by OpenCV */</span>
+    <span class="kt">char</span> <span class="n">channelSeq</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>     <span class="cm">/* ditto */</span>
+    <span class="kt">int</span>  <span class="n">dataOrder</span><span class="p">;</span>         <span class="cm">/* 0 - interleaved color channels, 1 - separate color channels.
+</span><span class="cm">                               cvCreateImage can only create interleaved images */</span>
+    <span class="kt">int</span>  <span class="n">origin</span><span class="p">;</span>            <span class="cm">/* 0 - top-left origin,
+</span><span class="cm">                               1 - bottom-left origin (Windows bitmaps style).  */</span>
+    <span class="kt">int</span>  <span class="n">align</span><span class="p">;</span>             <span class="cm">/* Alignment of image rows (4 or 8).
+</span><span class="cm">                               OpenCV ignores it and uses widthStep instead.    */</span>
+    <span class="kt">int</span>  <span class="n">width</span><span class="p">;</span>             <span class="cm">/* Image width in pixels.                           */</span>
+    <span class="kt">int</span>  <span class="n">height</span><span class="p">;</span>            <span class="cm">/* Image height in pixels.                          */</span>
+    <span class="k">struct</span> <span class="nc">_IplROI</span> <span class="o">*</span><span class="n">roi</span><span class="p">;</span>    <span class="cm">/* Image ROI. If NULL, the whole image is selected. */</span>
+    <span class="k">struct</span> <span class="nc">_IplImage</span> <span class="o">*</span><span class="n">maskROI</span><span class="p">;</span>      <span class="cm">/* Must be NULL. */</span>
+    <span class="kt">void</span>  <span class="o">*</span><span class="n">imageId</span><span class="p">;</span>                 <span class="cm">/* &#34;           &#34; */</span>
+    <span class="k">struct</span> <span class="nc">_IplTileInfo</span> <span class="o">*</span><span class="n">tileInfo</span><span class="p">;</span>  <span class="cm">/* &#34;           &#34; */</span>
+    <span class="kt">int</span>  <span class="n">imageSize</span><span class="p">;</span>         <span class="cm">/* Image data size in bytes
+</span><span class="cm">                               (==image-&gt;height*image-&gt;widthStep
+</span><span class="cm">                               in case of interleaved data)*/</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">imageData</span><span class="p">;</span>        <span class="cm">/* Pointer to aligned image data.         */</span>
+    <span class="kt">int</span>  <span class="n">widthStep</span><span class="p">;</span>         <span class="cm">/* Size of aligned image row in bytes.    */</span>
+    <span class="kt">int</span>  <span class="n">BorderMode</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>     <span class="cm">/* Ignored by OpenCV.                     */</span>
+    <span class="kt">int</span>  <span class="n">BorderConst</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>    <span class="cm">/* Ditto.                                 */</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">imageDataOrigin</span><span class="p">;</span>  <span class="cm">/* Pointer to very origin of image data
+</span><span class="cm">                               (not necessarily aligned) -
+</span><span class="cm">                               needed for correct deallocation */</span>
+<span class="p">}</span>
+<span class="n">IplImage</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>可见，IplImage是一个表示图像的结构体：C语言操作OpenCV的数据结构。地位等同于Mat，可以说是历史版本了。</p>
+    </div>
+    <div class="read-more">
+      <a href="/2016/05/10/opencv%E7%9A%84Mat%E7%B1%BB%E5%9E%8B%E4%BB%A5%E5%8F%8A%E5%9F%BA%E6%9C%AC%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2016/03/28/%E8%BF%90%E7%BB%B4%E4%BA%BA%E5%91%98%E5%B8%B8%E7%94%A8%E7%9A%84Linux%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/">运维人员常用的Linux命令总结</a></h1>
@@ -527,371 +631,6 @@
     </div>
     <div class="read-more">
       <a href="/2016/03/16/Oracle%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/03/16/%E5%9B%9E%E6%BB%9A%E6%AE%B5undo/">回滚段undo</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2016-03-16 </span>
-      <div class="post-category">
-          <a href="/categories/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93/"> Oracle数据库 </a>
-          </div>
-        <span class="more-meta"> 约 2264 字 </span>
-        <span class="more-meta"> 预计阅读 5 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <hr>
-<h2 id="undo的作用">Undo的作用</h2>
-<ul>
-<li>数据的回滚</li>
-<li>一致性读</li>
-<li>表的闪回（事务，查询的闪回..）</li>
-<li>失败会话的恢复</li>
-</ul>
-<h2 id="回滚rollback操作">回滚rollback操作</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">  1
-</span><span class="lnt">  2
-</span><span class="lnt">  3
-</span><span class="lnt">  4
-</span><span class="lnt">  5
-</span><span class="lnt">  6
-</span><span class="lnt">  7
-</span><span class="lnt">  8
-</span><span class="lnt">  9
-</span><span class="lnt"> 10
-</span><span class="lnt"> 11
-</span><span class="lnt"> 12
-</span><span class="lnt"> 13
-</span><span class="lnt"> 14
-</span><span class="lnt"> 15
-</span><span class="lnt"> 16
-</span><span class="lnt"> 17
-</span><span class="lnt"> 18
-</span><span class="lnt"> 19
-</span><span class="lnt"> 20
-</span><span class="lnt"> 21
-</span><span class="lnt"> 22
-</span><span class="lnt"> 23
-</span><span class="lnt"> 24
-</span><span class="lnt"> 25
-</span><span class="lnt"> 26
-</span><span class="lnt"> 27
-</span><span class="lnt"> 28
-</span><span class="lnt"> 29
-</span><span class="lnt"> 30
-</span><span class="lnt"> 31
-</span><span class="lnt"> 32
-</span><span class="lnt"> 33
-</span><span class="lnt"> 34
-</span><span class="lnt"> 35
-</span><span class="lnt"> 36
-</span><span class="lnt"> 37
-</span><span class="lnt"> 38
-</span><span class="lnt"> 39
-</span><span class="lnt"> 40
-</span><span class="lnt"> 41
-</span><span class="lnt"> 42
-</span><span class="lnt"> 43
-</span><span class="lnt"> 44
-</span><span class="lnt"> 45
-</span><span class="lnt"> 46
-</span><span class="lnt"> 47
-</span><span class="lnt"> 48
-</span><span class="lnt"> 49
-</span><span class="lnt"> 50
-</span><span class="lnt"> 51
-</span><span class="lnt"> 52
-</span><span class="lnt"> 53
-</span><span class="lnt"> 54
-</span><span class="lnt"> 55
-</span><span class="lnt"> 56
-</span><span class="lnt"> 57
-</span><span class="lnt"> 58
-</span><span class="lnt"> 59
-</span><span class="lnt"> 60
-</span><span class="lnt"> 61
-</span><span class="lnt"> 62
-</span><span class="lnt"> 63
-</span><span class="lnt"> 64
-</span><span class="lnt"> 65
-</span><span class="lnt"> 66
-</span><span class="lnt"> 67
-</span><span class="lnt"> 68
-</span><span class="lnt"> 69
-</span><span class="lnt"> 70
-</span><span class="lnt"> 71
-</span><span class="lnt"> 72
-</span><span class="lnt"> 73
-</span><span class="lnt"> 74
-</span><span class="lnt"> 75
-</span><span class="lnt"> 76
-</span><span class="lnt"> 77
-</span><span class="lnt"> 78
-</span><span class="lnt"> 79
-</span><span class="lnt"> 80
-</span><span class="lnt"> 81
-</span><span class="lnt"> 82
-</span><span class="lnt"> 83
-</span><span class="lnt"> 84
-</span><span class="lnt"> 85
-</span><span class="lnt"> 86
-</span><span class="lnt"> 87
-</span><span class="lnt"> 88
-</span><span class="lnt"> 89
-</span><span class="lnt"> 90
-</span><span class="lnt"> 91
-</span><span class="lnt"> 92
-</span><span class="lnt"> 93
-</span><span class="lnt"> 94
-</span><span class="lnt"> 95
-</span><span class="lnt"> 96
-</span><span class="lnt"> 97
-</span><span class="lnt"> 98
-</span><span class="lnt"> 99
-</span><span class="lnt">100
-</span><span class="lnt">101
-</span><span class="lnt">102
-</span><span class="lnt">103
-</span><span class="lnt">104
-</span><span class="lnt">105
-</span><span class="lnt">106
-</span><span class="lnt">107
-</span><span class="lnt">108
-</span><span class="lnt">109
-</span><span class="lnt">110
-</span><span class="lnt">111
-</span><span class="lnt">112
-</span><span class="lnt">113
-</span><span class="lnt">114
-</span><span class="lnt">115
-</span><span class="lnt">116
-</span><span class="lnt">117
-</span><span class="lnt">118
-</span><span class="lnt">119
-</span><span class="lnt">120
-</span><span class="lnt">121
-</span><span class="lnt">122
-</span><span class="lnt">123
-</span><span class="lnt">124
-</span><span class="lnt">125
-</span><span class="lnt">126
-</span><span class="lnt">127
-</span><span class="lnt">128
-</span><span class="lnt">129
-</span><span class="lnt">130
-</span><span class="lnt">131
-</span><span class="lnt">132
-</span><span class="lnt">133
-</span><span class="lnt">134
-</span><span class="lnt">135
-</span><span class="lnt">136
-</span><span class="lnt">137
-</span><span class="lnt">138
-</span><span class="lnt">139
-</span><span class="lnt">140
-</span><span class="lnt">141
-</span><span class="lnt">142
-</span><span class="lnt">143
-</span><span class="lnt">144
-</span><span class="lnt">145
-</span><span class="lnt">146
-</span><span class="lnt">147
-</span><span class="lnt">148
-</span><span class="lnt">149
-</span><span class="lnt">150
-</span><span class="lnt">151
-</span><span class="lnt">152
-</span><span class="lnt">153
-</span><span class="lnt">154
-</span><span class="lnt">155
-</span><span class="lnt">156
-</span><span class="lnt">157
-</span><span class="lnt">158
-</span><span class="lnt">159
-</span><span class="lnt">160
-</span><span class="lnt">161
-</span><span class="lnt">162
-</span><span class="lnt">163
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">SQL&gt; archive log list;
-ORA-01031: 权限不足
-SQL&gt; conn /as sysdba
-已连接。
-SQL&gt; archive log list;
-数据库日志模式            存档模式
-自动存档             启用
-存档终点            USE_DB_RECOVERY_FILE_DEST
-最早的联机日志序列     45
-下一个存档日志序列   47
-当前日志序列           47
-SQL&gt; create table t1(id int);
-
-表已创建。
-
-SQL&gt; select * from t1;
-
-未选定行
-
-SQL&gt; insert into t1 values(&#39;1&#39;);
-
-已创建 1 行。
-
-SQL&gt; insert into t1 values(&#39;2&#39;);
-
-已创建 1 行。
-
-SQL&gt; rollback;
-
-回退已完成。
-
-SQL&gt; select * from t1;
-
-未选定行
-
-SQL&gt; desc t1;
- 名称                                      是否为空? 类型
- ----------------------------------------- -------- ----------------------------
-
- ID                                                 NUMBER(38)
-
-SQL&gt; select * from t1;
-
-未选定行
-
-SQL&gt; insert into t1 values(1);
-
-已创建 1 行。
-
-SQL&gt; insert into t1 values(2);
-
-已创建 1 行。
-
-SQL&gt; select * from t1;
-
-        ID
-----------
-         1
-         2
-
-SQL&gt; rollback;
-
-回退已完成。
-
-SQL&gt; select * from t1;
-
-未选定行
-
-SQL&gt; archive log list;
-数据库日志模式            存档模式
-自动存档             启用
-存档终点            USE_DB_RECOVERY_FILE_DEST
-最早的联机日志序列     45
-下一个存档日志序列   47
-当前日志序列           47
-SQL&gt; shutdown immediate;
-数据库已经关闭。
-已经卸载数据库。
-ORACLE 例程已经关闭。
-SQL&gt; startup mount;
-ORACLE 例程已经启动。
-
-Total System Global Area 3307048960 bytes
-Fixed Size                  2180264 bytes
-Variable Size            1828719448 bytes
-Database Buffers         1459617792 bytes
-Redo Buffers               16531456 bytes
-数据库装载完毕。
-SQL&gt; alter database noarchivelog;
-alter database noarchivelog
-*
-第 1 行出现错误:
-ORA-38774: 无法禁用介质恢复 - 闪回数据库已启用
-
-
-SQL&gt; alter database flashback off;
-
-数据库已更改。
-
-SQL&gt;
-SQL&gt; alter database noarchivelog;
-
-数据库已更改。
-
-SQL&gt; alter database open;
-
-数据库已更改。
-
-SQL&gt; archive log list;
-数据库日志模式             非存档模式
-自动存档             禁用
-存档终点            USE_DB_RECOVERY_FILE_DEST
-最早的联机日志序列     45
-当前日志序列           47
-SQL&gt; select * from t1;
-
-未选定行
-
-SQL&gt; insert into t1 values(1);
-
-已创建 1 行。
-
-SQL&gt; insert into t1 values(2);
-
-已创建 1 行。
-
-SQL&gt; select * from t1;
-
-        ID
-----------
-         1
-         2
-
-SQL&gt; rollback;
-
-回退已完成。
-
-SQL&gt; select * from t1;
-
-未选定行
-
-SQL&gt; insert into t1 values(1);
-
-已创建 1 行。
-
-SQL&gt; insert into t1 values(2);
-
-已创建 1 行。
-
-SQL&gt; commit;
-
-提交完成。
-
-SQL&gt; rollback;
-
-回退已完成。
-
-SQL&gt; select * from t1;
-
-        ID
-----------
-         1
-         2
-</code></pre></td></tr></table>
-</div>
-</div><p>可见rollback操作和当前数据库 归档模式并没有关系，只和commit操作有关，一旦commit就无法回滚。</p>
-<p>如果没有指定 rollback 到哪一个保存点savepoint上，就意味着全部Rollback，而不是只是rollback一条操作。</p>
-    </div>
-    <div class="read-more">
-      <a href="/2016/03/16/%E5%9B%9E%E6%BB%9A%E6%AE%B5undo/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

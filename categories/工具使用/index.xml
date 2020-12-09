@@ -6,10 +6,24 @@
     <description>Recent content in 工具使用 on Suncle&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 01 Feb 2018 18:46:45 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 09 Dec 2020 11:06:53 +0800</lastBuildDate>
     
 	<atom:link href="https://suncle.me/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Tool Recommendation Chrome Browser Extension</title>
+      <link>https://suncle.me/2020/12/09/tool-recommendation-chrome-browser-extension/</link>
+      <pubDate>Wed, 09 Dec 2020 11:06:53 +0800</pubDate>
+      
+      <guid>https://suncle.me/2020/12/09/tool-recommendation-chrome-browser-extension/</guid>
+      <description>&lt;p&gt;最近有朋友问我，有没有什么可以提升效率的chrome插件推荐一下。我看了一下我的插件库，好用的还真不少。既然要推荐给一个人，还不如整理出来，分享给所有需要的人。毕竟，极致利他才能最终利己嘛。&lt;/p&gt;
+&lt;p&gt;话不多说，下面一个一个的推荐，并且附上效果截图。（注意，一定要看完，图中隐藏着很多人梦寐以求的大杀器！！！）&lt;/p&gt;
+&lt;h2 id=&#34;技术文章一键分发openwrite助手&#34;&gt;技术文章一键分发：openWrite助手&lt;/h2&gt;
+&lt;p&gt;安全认证简书、博客园、知乎、开源中国、掘金、SegmentFault等平台，一键群发文章。&lt;/p&gt;
+&lt;p&gt;免费版只有有限的分发次数，但是为了效率，这点费用还是很值得的。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://suncle-public.oss-cn-shenzhen.aliyuncs.com/pics/article/efficiency-tools-chrome-extension/open-write.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>使用ab和wrk对腾讯CLS进行benchmark测试</title>

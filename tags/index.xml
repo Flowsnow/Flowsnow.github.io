@@ -6,10 +6,28 @@
     <description>Recent content in Tags on Suncle&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 26 Oct 2020 19:30:14 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 09 Dec 2020 11:06:53 +0800</lastBuildDate>
     
 	<atom:link href="https://suncle.me/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>chrome</title>
+      <link>https://suncle.me/tags/chrome/</link>
+      <pubDate>Wed, 09 Dec 2020 11:06:53 +0800</pubDate>
+      
+      <guid>https://suncle.me/tags/chrome/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>工具</title>
+      <link>https://suncle.me/tags/%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Wed, 09 Dec 2020 11:06:53 +0800</pubDate>
+      
+      <guid>https://suncle.me/tags/%E5%B7%A5%E5%85%B7/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>旅游</title>
@@ -2060,15 +2078,6 @@
       <pubDate>Thu, 14 Jan 2016 23:20:34 +0800</pubDate>
       
       <guid>https://suncle.me/tags/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>工具</title>
-      <link>https://suncle.me/tags/%E5%B7%A5%E5%85%B7/</link>
-      <pubDate>Mon, 11 Jan 2016 10:50:22 +0800</pubDate>
-      
-      <guid>https://suncle.me/tags/%E5%B7%A5%E5%85%B7/</guid>
       <description></description>
     </item>
     

@@ -46,7 +46,7 @@
 <meta property="og:description" content="关注Python、Goalng的web后端、DevOps等领域" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suncle.me/" />
-<meta property="og:updated_time" content="2020-10-26T19:30:14+08:00" />
+<meta property="og:updated_time" content="2020-12-09T11:06:53+08:00" />
 <meta itemprop="name" content="Suncle&#39;s Blog">
 <meta itemprop="description" content="关注Python、Goalng的web后端、DevOps等领域">
 <meta name="twitter:card" content="summary"/>
@@ -116,6 +116,89 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2018/05/16/Hadoop-Project-Live-Flow-Statistic/">Hadoop项目：从cdn日志统计直播流量</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-05-16 </span>
+      <div class="post-category">
+          <a href="/categories/Hadoop/"> Hadoop </a>
+          </div>
+        <span class="more-meta"> 约 2707 字 </span>
+        <span class="more-meta"> 预计阅读 6 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>从在用的四家cdn的大量日志中，统计出每场直播的流量数据，包括国内流量和海外流量。</p>
+<h1 id="获取日志">获取日志</h1>
+<p>目前已有的数据来源：四家cdn服务商。每个服务商都有自己不同的日志接口，不同的日志获取方式，可以把日志类型分为：</p>
+<ul>
+<li>
+<p>网宿日志、帝联日志、阿里日志，腾讯日志</p>
+</li>
+<li>
+<p>直播日志、录播日志</p>
+</li>
+<li>
+<p>hls日志、rtmp日志、rtmpdist日志、hdl日志，不同协议日志的域名都不相同。</p>
+</li>
+</ul>
+<p>各家厂商cdn日志的收集方法参见各自官网。获取到的日志示例文件名如下：</p>
+<table>
+<thead>
+<tr>
+<th>cdn_code</th>
+<th>log_name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>netcenter</td>
+<td>2017-12-06-2300-2330_rtmp-wsz.qukanvideo.com.cn.log.gz</td>
+</tr>
+<tr>
+<td>dnion</td>
+<td>hls-d.quklive.com_20180509_03_04.gz</td>
+</tr>
+<tr>
+<td>alicdn</td>
+<td>play-a.quklive.com_2017_12_07_1100_1200.gz</td>
+</tr>
+<tr>
+<td>qukan-&gt;alicdn</td>
+<td>recordcdn-sz.qukanvideo.com_2017_12_06_1800_1900.gz</td>
+</tr>
+<tr>
+<td>tencent</td>
+<td>2017120607_hangzhouqukan.cdn.log.gz</td>
+</tr>
+</tbody>
+</table>
+<p>可以从文件名判断属于日志所属的cdn代码和对应的协议。将cdn代码、播放类型代码、协议代码对应的关系直接存在字典中：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">domain_protocol_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;recordcdn.quklive.com&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;qukan&#39;</span><span class="p">,</span> <span class="s1">&#39;record&#39;</span><span class="p">,</span> <span class="s1">&#39;hls&#39;</span><span class="p">),</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>通过日志名称匹配到域名，并取得对应的cdn代码、播放类型代码、协议代码，然后对具体的日志做不同的正则处理。</p>
+    </div>
+    <div class="read-more">
+      <a href="/2018/05/16/Hadoop-Project-Live-Flow-Statistic/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2018/05/09/Sqoop-Import-Export/">Sqoop导入导出</a></h1>
@@ -407,49 +490,6 @@ hadoop@node2:/bin$ sudo ln -s /usr/local/src/jdk1.8.0_162/bin/java java
     </div>
     <div class="read-more">
       <a href="/2018/03/22/use-google-translation-api/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2018/03/20/rtmp-handshake-bug/">排查rtmp协议推流时握手bug</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2018-03-20 </span>
-      <div class="post-category">
-          <a href="/categories/%E7%BD%91%E7%BB%9C/"> 网络 </a>
-          </div>
-        <span class="more-meta"> 约 2160 字 </span>
-        <span class="more-meta"> 预计阅读 5 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="概况">概况</h1>
-<p>转推流程序的过程：从一个观看地址拉流，然后推流到另一个推流地址。主要用于cdn之间转推，目前市面上大多数cdn厂商都愿意不支持动态转推，因此只能通过转推流程序进行转推。</p>
-<p>bug现象：使用obs studio推流到微赞可以成功，但是使用Erlang版本的转推流程序推流到微赞却失败。</p>
-<p>日志如下：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">14:12:35.926 [debug] payload [{amf,[&#34;onBWDone&#34;,0,null]}], msgtype[command_msg_4_amf0] 
-14:12:35.949 [debug] play succ ======&gt; url [&#34;/live-sz/w1520993434573948&#34;] 
-14:12:35.949 [debug] {rtmp_msg,4,0,data_msg_4_amf0,1,{amf,[&#34;|RtmpSampleAccess&#34;,true,true]}}
-14:12:35.949 [debug] {rtmp_msg,4,0,data_msg_4_amf0,1,{amf,[&#34;onStatus&#34;,{object,[{&#34;code&#34;,&#34;NetStream.Data.Start&#34;}]}]}}
-14:12:36.038 [error] gen_server &lt;0.122.0&gt; terminated with reason: no match of right hand value &lt;&lt;0,0,0,0,0,0,0,0,113,142,194,240,185,25,41,180,242,33,5,112,128,97,178,8,79,179,28,53,152,242,82,43,234,104,113,246,170,189,182,146,122,36,155,3,152,180,226,122,36,97,52,67,53,158,107,170,178,119,209,132,40,233,102,182,142,233,218,71,55,8,121,67,117,58,130,91,107,224,202,5,1,132,37,245,143,231,20,198,121,204,57,80,102,165,104,245,79,71,254,169,15,3,166,12,148,45,24,62,253,66,93,139,84,139,54,236,47,5,98,95,51,231,222,144,8,153,232,166,227,151,57,98,214,63,238,167,212,49,51,160,83,248,246,199,...&gt;&gt; in rtmp_handshake:create_c2/2 line 61
-</code></pre></td></tr></table>
-</div>
-</div>
-    </div>
-    <div class="read-more">
-      <a href="/2018/03/20/rtmp-handshake-bug/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
