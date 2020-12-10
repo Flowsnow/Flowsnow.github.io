@@ -46,7 +46,7 @@
 <meta property="og:description" content="关注Python、Goalng的web后端、DevOps等领域" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suncle.me/" />
-<meta property="og:updated_time" content="2020-12-09T11:06:53+08:00" />
+<meta property="og:updated_time" content="2020-12-09T12:44:56+08:00" />
 <meta itemprop="name" content="Suncle&#39;s Blog">
 <meta itemprop="description" content="关注Python、Goalng的web后端、DevOps等领域">
 <meta name="twitter:card" content="summary"/>
@@ -116,6 +116,74 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2016/01/14/Linux%E7%9A%84%E6%96%87%E4%BB%B6%E5%92%8C%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%AE%A1%E7%90%86/">Linux的文件和文件系统的管理</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-01-14 </span>
+      <div class="post-category">
+          <a href="/categories/Linux/"> Linux </a>
+          </div>
+        <span class="more-meta"> 约 3143 字 </span>
+        <span class="more-meta"> 预计阅读 7 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <hr>
+<h2 id="文件权限">文件权限</h2>
+<h3 id="什么是文件系统">什么是文件系统？</h3>
+<p>文件系统是操作系统在分区上保存文件信息的方法和数据结构。</p>
+<h3 id="文件有哪些权限">文件有哪些权限？</h3>
+<p><img src="https://flowsnow.oss-cn-shanghai.aliyuncs.com/history/Flowsnow%E6%96%87%E4%BB%B6%E6%9C%89%E5%93%AA%E4%BA%9B%E6%9D%83%E9%99%90.jpg" alt="文件有那些权限"></p>
+<p>三种基本权限分别为：读、写、执行，说明如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">代表字符</th>
+<th align="center">权限</th>
+<th align="center">对文件的意义</th>
+<th align="center">对目录的意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">r</td>
+<td align="center">读权限</td>
+<td align="center">可以读文件内容</td>
+<td align="center">可以列出目录中的文件列表</td>
+</tr>
+<tr>
+<td align="center">w</td>
+<td align="center">写权限</td>
+<td align="center">可以修改和删除文件</td>
+<td align="center">可以在目录中创建和删除文件</td>
+</tr>
+<tr>
+<td align="center">x</td>
+<td align="center">执行权限</td>
+<td align="center">可以执行该文件</td>
+<td align="center">可以使用cd命令进入该目录</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>目录上只有执行权限，便是可以进入或穿越他进入更深层次的子目录</li>
+<li>目录上只有执行权限，要访问该目录下的又读权限的文件，必须知道文件名才可以访问</li>
+<li>目录上只有执行权限，不能列出目录列表也不能删除该目录</li>
+<li>目录上执行权限和读权限，表示可以进入目录并且列出目录列表</li>
+<li>目录上执行权限和写权限的组合，表示可以在目录中创建、删除和重命名文件</li>
+</ol>
+<h3 id="特殊权限">特殊权限</h3>
+<p>有三种特殊权限suid、sgid和sticky bit。参见<a href="http://alan-hjkl.iteye.com/blog/1526858">Linux中的文件特殊权限</a></p>
+    </div>
+    <div class="read-more">
+      <a href="/2016/01/14/Linux%E7%9A%84%E6%96%87%E4%BB%B6%E5%92%8C%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%AE%A1%E7%90%86/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2016/01/11/Sublime-Text-3%E8%A7%A3%E5%86%B3%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/">Sublime Text 3解决中文乱码</a></h1>

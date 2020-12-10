@@ -10,49 +10,56 @@
   
   <url>
     <loc>https://suncle.me/categories/</loc>
-    <lastmod>2020-12-09T11:06:53+08:00</lastmod>
+    <lastmod>2020-12-09T12:44:56+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://suncle.me/tags/chrome/</loc>
-    <lastmod>2020-12-09T11:06:53+08:00</lastmod>
+    <lastmod>2020-12-09T12:44:56+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://suncle.me/post/</loc>
-    <lastmod>2020-12-09T11:06:53+08:00</lastmod>
+    <lastmod>2020-12-09T12:44:56+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://suncle.me/</loc>
-    <lastmod>2020-12-09T11:06:53+08:00</lastmod>
+    <lastmod>2020-12-09T12:44:56+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://suncle.me/tags/</loc>
-    <lastmod>2020-12-09T11:06:53+08:00</lastmod>
+    <lastmod>2020-12-09T12:44:56+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://suncle.me/tags/%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2020-12-09T11:06:53+08:00</lastmod>
+    <lastmod>2020-12-09T12:44:56+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://suncle.me/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2020-12-09T11:06:53+08:00</lastmod>
+    <lastmod>2020-12-09T12:44:56+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://suncle.me/2020/12/09/tool-recommendation-useful-alfred-workflow/</loc>
+    <lastmod>2020-12-09T12:44:56+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

@@ -46,7 +46,7 @@
 <meta property="og:description" content="关注Python、Goalng的web后端、DevOps等领域" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suncle.me/" />
-<meta property="og:updated_time" content="2020-12-09T11:06:53+08:00" />
+<meta property="og:updated_time" content="2020-12-09T12:44:56+08:00" />
 <meta itemprop="name" content="Suncle&#39;s Blog">
 <meta itemprop="description" content="关注Python、Goalng的web后端、DevOps等领域">
 <meta name="twitter:card" content="summary"/>
@@ -116,6 +116,40 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2016/03/16/Oracle%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">Oracle数据结构</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-03-16 </span>
+      <div class="post-category">
+          <a href="/categories/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93/"> Oracle数据库 </a>
+          </div>
+        <span class="more-meta"> 约 3514 字 </span>
+        <span class="more-meta"> 预计阅读 8 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="oracle的数据存储结构">Oracle的数据存储结构</h2>
+<p><img src="https://flowsnow.oss-cn-shanghai.aliyuncs.com/history/Oracle-Oracle%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84.png" alt=""></p>
+<ul>
+<li>表空间（tablespace）&ndash;Oracle中最大的逻辑存储单位</li>
+<li>数据文件（data file）&ndash;表空间物理存储载体</li>
+<li>段（segment）&ndash;Oracle中所有占用空间的对象的总称</li>
+<li>extend&ndash;段的组成单位</li>
+<li>数据块（data block）&ndash;extend的组成单位，是Oracle存储和数据操作的最小单位。</li>
+</ul>
+<h2 id="数据块">数据块</h2>
+<p>数据块是Oracle存储和数据操作的最小单位，但不一定和操作系统的os块相同，一个数据块可能有多个os块构成。</p>
+<p><img src="https://flowsnow.oss-cn-shanghai.aliyuncs.com/history/Oracle-%E6%95%B0%E6%8D%AE%E5%9D%97%E5%92%8Cos%E5%9D%97.png" alt=""></p>
+    </div>
+    <div class="read-more">
+      <a href="/2016/03/16/Oracle%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2016/03/16/%E5%9B%9E%E6%BB%9A%E6%AE%B5undo/">回滚段undo</a></h1>
@@ -1235,127 +1269,6 @@ SQL&gt; alter database open;
     </div>
     <div class="read-more">
       <a href="/2016/03/16/Oracle%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/02/19/%E5%A4%8D%E6%9D%82%E4%B8%80%E7%82%B9%E7%9A%84SQL%E8%AF%AD%E5%8F%A5/">复杂一点的SQL语句</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2016-02-19 </span>
-      <div class="post-category">
-          <a href="/categories/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93/"> Oracle数据库 </a>
-          </div>
-        <span class="more-meta"> 约 1886 字 </span>
-        <span class="more-meta"> 预计阅读 4 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="ddl对表或者表的属性进行了改变">DDL：对表或者表的属性进行了改变</h2>
-<h3 id="create创建表创建用户创建视图">create：创建表创建用户创建视图</h3>
-<p>创建表</p>
-<p>create table student(id int,score int) ;</p>
-<p>student后面与括号之间可以有空格可以没有</p>
-<p>创建用户</p>
-<p>create user liuyifei identified by 4852396;</p>
-<p>drop：删除整个表、删除指定的用户、删除指定的存储空间</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">drop table table_name;
-drop user user_name;
-
---删除空的表空间，但是不包含物理文件
-drop tablespace tablespace_name;
---删除非空表空间，但是不包含物理文件
-drop tablespace tablespace_name including contents;
---删除空表空间，包含物理文件
-drop tablespace tablespace_name including datafiles;
---删除非空表空间，包含物理文件
-drop tablespace tablespace_name including contents and datafiles;
---如果其他表空间中的表有外键等约束关联到了本表空间中的表的字段，就要加上CASCADE CONSTRAINTS
-drop tablespace tablespace_name including contents and datafiles CASCADE CONSTRAINTS;
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="truncate">truncate</h3>
-<p>删除表中的所有数据，但是表还是存在的。和drop的先后参见如下：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">SQL&gt; create table st1(id int);
-
-表已创建。
-
-SQL&gt; truncate table st1;
-
-表被截断。
-
-SQL&gt; drop table st1;
-
-表已删除。
-
-SQL&gt; create table st1(id int);
-
-表已创建。
-
-SQL&gt; drop table st1;
-
-表已删除。
-
-SQL&gt; truncate table st1;
-truncate table st1
-               *
-第 1 行出现错误:
-ORA-00942: 表或视图不存在
-</code></pre></td></tr></table>
-</div>
-</div>
-    </div>
-    <div class="read-more">
-      <a href="/2016/02/19/%E5%A4%8D%E6%9D%82%E4%B8%80%E7%82%B9%E7%9A%84SQL%E8%AF%AD%E5%8F%A5/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

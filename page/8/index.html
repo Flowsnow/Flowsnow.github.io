@@ -46,7 +46,7 @@
 <meta property="og:description" content="关注Python、Goalng的web后端、DevOps等领域" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suncle.me/" />
-<meta property="og:updated_time" content="2020-12-09T11:06:53+08:00" />
+<meta property="og:updated_time" content="2020-12-09T12:44:56+08:00" />
 <meta itemprop="name" content="Suncle&#39;s Blog">
 <meta itemprop="description" content="关注Python、Goalng的web后端、DevOps等领域">
 <meta name="twitter:card" content="summary"/>
@@ -116,6 +116,33 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2017/10/31/%E4%BB%8EPython%E8%B0%83%E7%94%A8%E5%A0%86%E6%A0%88%E8%8E%B7%E5%8F%96%E8%A1%8C%E5%8F%B7%E7%AD%89%E4%BF%A1%E6%81%AF/">从Python调用堆栈获取行号等信息</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-10-31 </span>
+      <div class="post-category">
+          <a href="/categories/Python/"> Python </a>
+          </div>
+        <span class="more-meta"> 约 820 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>程序中的日志打印，或者消息上传，比如kafka消息等等。经常上传的消息中需要上传堆栈信息中的文件名、行号、上层调用者等具体用于定位的消息。Python提供了以下两种方法：</p>
+<ul>
+<li><code>sys._getframe</code>， 基础方法</li>
+<li><code>inspect.currentframe</code>， 推荐方法，提供除了<code>sys._getframe</code>方法之外更多的frame相关的方法</li>
+</ul>
+    </div>
+    <div class="read-more">
+      <a href="/2017/10/31/%E4%BB%8EPython%E8%B0%83%E7%94%A8%E5%A0%86%E6%A0%88%E8%8E%B7%E5%8F%96%E8%A1%8C%E5%8F%B7%E7%AD%89%E4%BF%A1%E6%81%AF/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2017/09/25/%E8%AF%A6%E8%A7%A3supervisor%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/">详解supervisor进程管理</a></h1>
@@ -463,58 +490,6 @@
     </div>
     <div class="read-more">
       <a href="/2017/05/10/SQLAlchemy%E4%BD%BF%E7%94%A8/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2017/04/27/react%E5%9F%BA%E7%A1%80/">react基础</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-04-27 </span>
-      <div class="post-category">
-          <a href="/categories/JavaScript/"> JavaScript </a>
-          </div>
-        <span class="more-meta"> 约 1620 字 </span>
-        <span class="more-meta"> 预计阅读 4 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="hello-world">Hello World</h1>
-<p>Hello World作为开篇示例</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="nx">ReactDOM</span> <span class="nx">from</span> <span class="s1">&#39;react-dom&#39;</span><span class="p">;</span>
-
-<span class="kr">class</span> <span class="nx">Root</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
-  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Hello</span> <span class="nx">World</span><span class="o">!&lt;</span><span class="err">/h1&gt;;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">Root</span> <span class="o">/&gt;</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">));</span>
-</code></pre></td></tr></table>
-</div>
-</div><h1 id="jsx简介">JSX简介</h1>
-<p>react使用的JSX是JavaScript的一个语法扩展，上述Hello World示例中的return语句即为JSX写法。</p>
-    </div>
-    <div class="read-more">
-      <a href="/2017/04/27/react%E5%9F%BA%E7%A1%80/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

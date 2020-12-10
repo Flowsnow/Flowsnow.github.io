@@ -46,7 +46,7 @@
 <meta property="og:description" content="关注Python、Goalng的web后端、DevOps等领域" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suncle.me/" />
-<meta property="og:updated_time" content="2020-12-09T11:06:53+08:00" />
+<meta property="og:updated_time" content="2020-12-09T12:44:56+08:00" />
 <meta itemprop="name" content="Suncle&#39;s Blog">
 <meta itemprop="description" content="关注Python、Goalng的web后端、DevOps等领域">
 <meta name="twitter:card" content="summary"/>
@@ -116,6 +116,54 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2016/12/29/linux%E9%85%8D%E7%BD%AEc-11%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83/">linux配置c&#43;&#43;11编译环境</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-12-29 </span>
+      <div class="post-category">
+          <a href="/categories/Linux/"> Linux </a>
+          </div>
+        <span class="more-meta"> 约 1218 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h1 id="linux配置c11编译环境">linux配置c++11编译环境</h1>
+<h2 id="配置yum源">配置yum源</h2>
+<p>此处我们使用163的yum源，配置如下</p>
+<p><strong>首先备份/etc/yum.repos.d/CentOS-Base.repo</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
+</code></pre></td></tr></table>
+</div>
+</div><p>下载对应版本repo文件, 放入/etc/yum.repos.d/(操作前请做好相应备份)，以下为下载链接</p>
+<p><a href="https://mirrors.163.com/.help/CentOS6-Base-163.repo">https://mirrors.163.com/.help/CentOS6-Base-163.repo</a></p>
+<p>运行以下命令生成yum缓存</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">yum clean all
+yum makecache
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+    <div class="read-more">
+      <a href="/2016/12/29/linux%E9%85%8D%E7%BD%AEc-11%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2016/12/23/Python%E8%A7%A3%E6%9E%84%E4%B8%8E%E5%B0%81%E8%A3%85/">Python解构与封装</a></h1>
@@ -745,103 +793,6 @@
     </div>
     <div class="read-more">
       <a href="/2016/08/30/Python%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2016/07/08/sql%E8%AF%AD%E5%8F%A5%E4%B8%AD%E5%8A%A0%E5%8F%B7%E7%9A%84%E4%BD%9C%E7%94%A8/">sql语句中(&#43;)的作用</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2016-07-08 </span>
-      <div class="post-category">
-          <a href="/categories/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93/"> Oracle数据库 </a>
-          </div>
-        <span class="more-meta"> 约 632 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="演示示例">演示示例</h2>
-<p>说明：以下示例中，表a是员工表，有a,b,c,d四个员工，性别都是男性m。表b是工资表，有a,b,d四个员工，工资对应的是1000，2000，4000。然后分别演示带(+)符号的和不带(+)符号的，结果如下。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SQL</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">a</span><span class="p">;</span>
-
-<span class="n">NAME</span>                 <span class="n">SEX</span>
-<span class="c1">-------------------- -----
-</span><span class="c1"></span><span class="n">a</span>                    <span class="n">m</span>
-<span class="n">b</span>                    <span class="n">m</span>
-<span class="k">c</span>                    <span class="n">m</span>
-<span class="n">d</span>                    <span class="n">m</span>
-
-<span class="k">SQL</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">b</span><span class="p">;</span>
-
-<span class="n">NAME</span>                      <span class="n">MONEY</span>
-<span class="c1">-------------------- ----------
-</span><span class="c1"></span><span class="n">a</span>                          <span class="mi">1000</span>
-<span class="n">b</span>                          <span class="mi">2000</span>
-<span class="n">d</span>                          <span class="mi">4000</span>
-
-<span class="k">SQL</span><span class="o">&gt;</span> <span class="k">select</span> <span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="n">b</span><span class="p">.</span><span class="n">money</span> <span class="k">from</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="k">where</span> <span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="o">=</span><span class="n">b</span><span class="p">.</span><span class="n">name</span><span class="p">(</span><span class="o">+</span><span class="p">);</span>
-
-<span class="n">NAME</span>                      <span class="n">MONEY</span>
-<span class="c1">-------------------- ----------
-</span><span class="c1"></span><span class="n">a</span>                          <span class="mi">1000</span>
-<span class="n">b</span>                          <span class="mi">2000</span>
-<span class="n">d</span>                          <span class="mi">4000</span>
-<span class="k">c</span>
-
-<span class="k">SQL</span><span class="o">&gt;</span> <span class="k">select</span> <span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="n">b</span><span class="p">.</span><span class="n">money</span> <span class="k">from</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="k">where</span> <span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="o">=</span><span class="n">b</span><span class="p">.</span><span class="n">name</span><span class="p">;</span>
-
-<span class="n">NAME</span>                      <span class="n">MONEY</span>
-<span class="c1">-------------------- ----------
-</span><span class="c1"></span><span class="n">a</span>                          <span class="mi">1000</span>
-<span class="n">b</span>                          <span class="mi">2000</span>
-<span class="n">d</span>                          <span class="mi">4000</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>可见，带(+)号时，a表中的所有人都在，即使工资为空。不带(+)时，a表中的没有出现工资为空的员工c。</p>
-    </div>
-    <div class="read-more">
-      <a href="/2016/07/08/sql%E8%AF%AD%E5%8F%A5%E4%B8%AD%E5%8A%A0%E5%8F%B7%E7%9A%84%E4%BD%9C%E7%94%A8/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
