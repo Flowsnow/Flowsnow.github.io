@@ -16,7 +16,14 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Suncle" /><meta name="description" content="&amp;ldquo;There are only two hard things in Computer Science: cache invalidation and naming things.&amp;rdquo; — Phil Karlton 在计算机领域只有两件艰难的事情：缓存失效和对象命名。 这还真不是一个笑话。写代码是比较容易的事情，但是阅读别" /><meta name="keywords" content="计算机, 后端, Python, golang" />
+<meta name="author" content="Suncle" /><meta name="description" content=" &amp;ldquo;There are only two hard things in Computer Science: cache invalidation and naming things.&amp;rdquo;
+— Phil Karlton
+ 在计算机领域只有两件艰难的事情：缓存失效和对象命名。
+这还真不是一个笑话。写代码是比较容易的事情，但是阅读别人的代码，那就因人而异了。
+好的工程师写出来的代码可读性很高，比如我上家公司的同事旭总。一般的工程师写出来的代码就像是一坨屎，比如之前某某几位同事。
+所以我会经常去格式化他们的代码。如果不幸轮到你继续在屎代码上面开发，那就是屎上堆屎了。心疼你。
+当然有时候工期紧张，我自己也会写一些屎代码shit code，但是每次提交的时候都有一种强烈的愧疚感。希望这些代码最多存活一个月就消失，不要被人踩到了。
+" /><meta name="keywords" content="计算机, 后端, Python, golang" />
 
 
 
@@ -41,13 +48,31 @@
 
 
 <meta property="og:title" content="坚持住啊，还在屎山中爬行的同事们" />
-<meta property="og:description" content="&ldquo;There are only two hard things in Computer Science: cache invalidation and naming things.&rdquo; — Phil Karlton 在计算机领域只有两件艰难的事情：缓存失效和对象命名。 这还真不是一个笑话。写代码是比较容易的事情，但是阅读别" />
+<meta property="og:description" content="
+&ldquo;There are only two hard things in Computer Science: cache invalidation and naming things.&rdquo;
+— Phil Karlton
+
+在计算机领域只有两件艰难的事情：缓存失效和对象命名。
+这还真不是一个笑话。写代码是比较容易的事情，但是阅读别人的代码，那就因人而异了。
+好的工程师写出来的代码可读性很高，比如我上家公司的同事旭总。一般的工程师写出来的代码就像是一坨屎，比如之前某某几位同事。
+
+所以我会经常去格式化他们的代码。如果不幸轮到你继续在屎代码上面开发，那就是屎上堆屎了。心疼你。
+当然有时候工期紧张，我自己也会写一些屎代码shit code，但是每次提交的时候都有一种强烈的愧疚感。希望这些代码最多存活一个月就消失，不要被人踩到了。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://suncle.me/2020/12/14/best-practice-for-shit-code/" />
 <meta property="article:published_time" content="2020-12-14T19:46:46+08:00" />
 <meta property="article:modified_time" content="2020-12-14T19:46:46+08:00" />
 <meta itemprop="name" content="坚持住啊，还在屎山中爬行的同事们">
-<meta itemprop="description" content="&ldquo;There are only two hard things in Computer Science: cache invalidation and naming things.&rdquo; — Phil Karlton 在计算机领域只有两件艰难的事情：缓存失效和对象命名。 这还真不是一个笑话。写代码是比较容易的事情，但是阅读别">
+<meta itemprop="description" content="
+&ldquo;There are only two hard things in Computer Science: cache invalidation and naming things.&rdquo;
+— Phil Karlton
+
+在计算机领域只有两件艰难的事情：缓存失效和对象命名。
+这还真不是一个笑话。写代码是比较容易的事情，但是阅读别人的代码，那就因人而异了。
+好的工程师写出来的代码可读性很高，比如我上家公司的同事旭总。一般的工程师写出来的代码就像是一坨屎，比如之前某某几位同事。
+
+所以我会经常去格式化他们的代码。如果不幸轮到你继续在屎代码上面开发，那就是屎上堆屎了。心疼你。
+当然有时候工期紧张，我自己也会写一些屎代码shit code，但是每次提交的时候都有一种强烈的愧疚感。希望这些代码最多存活一个月就消失，不要被人踩到了。">
 <meta itemprop="datePublished" content="2020-12-14T19:46:46+08:00" />
 <meta itemprop="dateModified" content="2020-12-14T19:46:46+08:00" />
 <meta itemprop="wordCount" content="1700">
@@ -57,7 +82,16 @@
 <meta itemprop="keywords" content="shit code,规范性," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="坚持住啊，还在屎山中爬行的同事们"/>
-<meta name="twitter:description" content="&ldquo;There are only two hard things in Computer Science: cache invalidation and naming things.&rdquo; — Phil Karlton 在计算机领域只有两件艰难的事情：缓存失效和对象命名。 这还真不是一个笑话。写代码是比较容易的事情，但是阅读别"/>
+<meta name="twitter:description" content="
+&ldquo;There are only two hard things in Computer Science: cache invalidation and naming things.&rdquo;
+— Phil Karlton
+
+在计算机领域只有两件艰难的事情：缓存失效和对象命名。
+这还真不是一个笑话。写代码是比较容易的事情，但是阅读别人的代码，那就因人而异了。
+好的工程师写出来的代码可读性很高，比如我上家公司的同事旭总。一般的工程师写出来的代码就像是一坨屎，比如之前某某几位同事。
+
+所以我会经常去格式化他们的代码。如果不幸轮到你继续在屎代码上面开发，那就是屎上堆屎了。心疼你。
+当然有时候工期紧张，我自己也会写一些屎代码shit code，但是每次提交的时候都有一种强烈的愧疚感。希望这些代码最多存活一个月就消失，不要被人踩到了。"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -211,7 +245,6 @@
 <p>而长远的目标在资本的压力之下，也显得一文不值。代码规范提升10%的重要性和“明天上线”这个命令比起来，也是低到尘埃的的。然后日复一日，明天又将是明天，规范性最终消失殆尽，屎山越来越高。</p>
 <p>说到底，这些都是钱的问题，也是最无解的问题，最终在某一天，屎山崩溃，一切回到原点。</p>
 <p>最后，大胆猜测一下，昨天的Google服务崩溃也是因为屎太多了吧。</p>
-
     </div>
 
     <div class="post-copyright">

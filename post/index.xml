@@ -17,7 +17,16 @@
       <pubDate>Mon, 14 Dec 2020 19:46:46 +0800</pubDate>
       
       <guid>https://suncle.me/2020/12/14/best-practice-for-shit-code/</guid>
-      <description>&amp;ldquo;There are only two hard things in Computer Science: cache invalidation and naming things.&amp;rdquo; — Phil Karlton 在计算机领域只有两件艰难的事情：缓存失效和对象命名。 这还真不是一个笑话。写代码是比较容易的事情，但是阅读别</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;There are only two hard things in Computer Science: cache invalidation and naming things.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;— &lt;a href=&#34;https://martinfowler.com/bliki/TwoHardThings.html&#34;&gt;Phil Karlton&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在计算机领域只有两件艰难的事情：缓存失效和对象命名。&lt;/p&gt;
+&lt;p&gt;这还真不是一个笑话。写代码是比较容易的事情，但是阅读别人的代码，那就因人而异了。&lt;/p&gt;
+&lt;p&gt;好的工程师写出来的代码可读性很高，比如我上家公司的同事旭总。一般的工程师写出来的代码就像是一坨屎，比如之前某某几位同事。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://suncle-public.oss-cn-shenzhen.aliyuncs.com/pics/article/best-practice-shit-code/%E4%BD%A0%E7%8C%9C%E6%88%91%E7%9A%84%E6%9E%AA%E9%87%8C%E6%9C%89%E6%B2%A1%E6%9C%89%E5%AD%90%E5%BC%B9.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;所以我会经常去格式化他们的代码。如果不幸轮到你继续在屎代码上面开发，那就是屎上堆屎了。心疼你。&lt;/p&gt;
+&lt;p&gt;当然有时候工期紧张，我自己也会写一些屎代码&lt;code&gt;shit code&lt;/code&gt;，但是每次提交的时候都有一种强烈的愧疚感。希望这些代码最多存活一个月就消失，不要被人踩到了。&lt;/p&gt;</description>
     </item>
     
     <item>
