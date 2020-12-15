@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>坚持住啊，还在屎山中爬行的同事们 - Suncle&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Suncle" /><meta name="description" content="&amp;ldquo;There are only two hard things in Computer Science: cache invalidation and naming things.&amp;rdquo; — Phil Karlton 在计算机领域只有两件艰难的事情：缓存失效和对象命名。 这还真不是一个笑话。写代码是比较容易的事情，但是阅读别" /><meta name="keywords" content="计算机, 后端, Python, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.74.3 with theme even" />
+
+
+<link rel="canonical" href="https://suncle.me/2020/12/14/best-practice-for-shit-code/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <meta name="referrer" content="no-referrer-when-downgrade">
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="坚持住啊，还在屎山中爬行的同事们" />
+<meta property="og:description" content="&ldquo;There are only two hard things in Computer Science: cache invalidation and naming things.&rdquo; — Phil Karlton 在计算机领域只有两件艰难的事情：缓存失效和对象命名。 这还真不是一个笑话。写代码是比较容易的事情，但是阅读别" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://suncle.me/2020/12/14/best-practice-for-shit-code/" />
+<meta property="article:published_time" content="2020-12-14T19:46:46+08:00" />
+<meta property="article:modified_time" content="2020-12-14T19:46:46+08:00" />
+<meta itemprop="name" content="坚持住啊，还在屎山中爬行的同事们">
+<meta itemprop="description" content="&ldquo;There are only two hard things in Computer Science: cache invalidation and naming things.&rdquo; — Phil Karlton 在计算机领域只有两件艰难的事情：缓存失效和对象命名。 这还真不是一个笑话。写代码是比较容易的事情，但是阅读别">
+<meta itemprop="datePublished" content="2020-12-14T19:46:46+08:00" />
+<meta itemprop="dateModified" content="2020-12-14T19:46:46+08:00" />
+<meta itemprop="wordCount" content="1700">
+
+
+
+<meta itemprop="keywords" content="shit code,规范性," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="坚持住啊，还在屎山中爬行的同事们"/>
+<meta name="twitter:description" content="&ldquo;There are only two hard things in Computer Science: cache invalidation and naming things.&rdquo; — Phil Karlton 在计算机领域只有两件艰难的事情：缓存失效和对象命名。 这还真不是一个笑话。写代码是比较容易的事情，但是阅读别"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Suncle&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Suncle&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">坚持住啊，还在屎山中爬行的同事们</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-12-14 </span>
+        <div class="post-category">
+            <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/"> 软件工程实践 </a>
+            </div>
+          <span class="more-meta"> 约 1700 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#屎代码是怎么产生的">屎代码是怎么产生的？</a></li>
+        <li><a href="#不写屎代码从命名规范开始">不写屎代码从命名规范开始</a></li>
+        <li><a href="#怎么才能根治屎上堆屎">怎么才能根治屎上堆屎？</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <blockquote>
+<p>&ldquo;There are only two hard things in Computer Science: cache invalidation and naming things.&rdquo;</p>
+<p>— <a href="https://martinfowler.com/bliki/TwoHardThings.html">Phil Karlton</a></p>
+</blockquote>
+<p>在计算机领域只有两件艰难的事情：缓存失效和对象命名。</p>
+<p>这还真不是一个笑话。写代码是比较容易的事情，但是阅读别人的代码，那就因人而异了。</p>
+<p>好的工程师写出来的代码可读性很高，比如我上家公司的同事旭总。一般的工程师写出来的代码就像是一坨屎，比如之前某某几位同事。</p>
+<p><img src="https://suncle-public.oss-cn-shenzhen.aliyuncs.com/pics/article/best-practice-shit-code/%E4%BD%A0%E7%8C%9C%E6%88%91%E7%9A%84%E6%9E%AA%E9%87%8C%E6%9C%89%E6%B2%A1%E6%9C%89%E5%AD%90%E5%BC%B9.jpg" alt=""></p>
+<p>所以我会经常去格式化他们的代码。如果不幸轮到你继续在屎代码上面开发，那就是屎上堆屎了。心疼你。</p>
+<p>当然有时候工期紧张，我自己也会写一些屎代码<code>shit code</code>，但是每次提交的时候都有一种强烈的愧疚感。希望这些代码最多存活一个月就消失，不要被人踩到了。</p>
+<h2 id="屎代码是怎么产生的">屎代码是怎么产生的？</h2>
+<p>要说怎么写屎代码，这个我就很拿手了。下面随便列举一些常见的屎代码产生方式：</p>
+<ol>
+<li>看不懂的命名</li>
+<li>过长的类|函数</li>
+<li>大段重复的代码</li>
+<li>没有注释的Magic number</li>
+<li>100多个参数的函数</li>
+<li>一堆没有注释的if-else嵌套</li>
+<li>业务过度耦合：支付订单和点餐订单能耦合在一起？谁重构谁痛苦</li>
+<li>代码和文档分离：几年前的业务完全不知道是个啥</li>
+<li>&hellip;</li>
+</ol>
+<p>很不幸，大多数人的项目中，这些常见的屎代码产生方式是随处可见的。</p>
+<p>毕竟，几百个人写屎代码，就像几百个人堆积木。堆得歪歪扭扭，摇摇晃晃，乱七八糟，你千万不能抽里面的积木，指不定抽了一块就塌了。只能看见哪里觉得不牢靠不停的往那边填积木。只要不倒就好了。这也是大部分程序员的追求了。</p>
+<p><img src="https://suncle-public.oss-cn-shenzhen.aliyuncs.com/pics/article/best-practice-shit-code/%E6%8B%89%E5%B1%8E.jpg" alt=""></p>
+<h2 id="不写屎代码从命名规范开始">不写屎代码从命名规范开始</h2>
+<p>如果想解决代码高耦合这坨屎，需要有比较好的顶层解耦设计，划分清楚各自服务的边界。</p>
+<p>如果你一直都只是代码搬运工，传说中的cv工程师，那么到这一步还有一些内功需要你去修炼的。</p>
+<p>但是好的命名规范确实每个人都可以做到的。不同的语言都有各自的规范，如果所有人都能正确理解那些规范，并且严格遵守，同时强制使用ci校验，就可以保证代码外表上是美观的。</p>
+<p>这里就以Go语言的命名规范为例讲一下怎么写出人人都想闻的香代码。</p>
+<p><code>go fmt</code>可以统一不同人的编码规范，却没有办法格式化出一个好的命名。但是在Go社区中其实一直都存在着一些成文的或者不成文的命名规则，比如：</p>
+<ol>
+<li>某个名称在包外是否可见，就取决于其首个字符是否为大写字母</li>
+<li>使用驼峰命名而不是下划线</li>
+<li>单个方法的接口名称应该是<code>InterfaceName = MethodName + er</code></li>
+<li><code>Getter</code>方法的命名不需要包含<code>Get</code>，比如cat.Owner()方法不需要命名成cat.GetOwner()</li>
+<li>首字母缩写词应该保持原有格式：应该使用userID而不是userId，应该使用userAPI而不是userApi</li>
+<li>变量名需要尽可能的简单但是又能描述清楚</li>
+<li>&hellip;</li>
+</ol>
+<p>总之，规则是有的。只是很多程序员选择直接忽视。比如前面的五条。</p>
+<p>还有一些规则是被过渡滥用了。比如第6条，很多同事的命名沿用以前的老风格，在一个struct中大量使用单字符的的变量或者随心所欲的缩写。这样的代码是完全没有办法阅读的。所谓有追求的程序员，还是得追求一下代码的品味。</p>
+<p>悲观的说，即使做到了这些也只是你一个人的代码是优雅的，但是你怎么能保证所有人都有这样的追求呢？作为个人，除了提建议之外，其实是没有太多有效的办法的。</p>
+<h2 id="怎么才能根治屎上堆屎">怎么才能根治屎上堆屎？</h2>
+<p>想根治这个问题，只靠某个程序员一直保持优雅代码是没什么用的。</p>
+<p>你写10句优雅的代码，其他10个同事每个人都写10句屎代码。这样算起来，优雅代码的比例最多只有十分之一。</p>
+<p>如果一个团队想要彻底解决屎上堆屎这个老大难问题，就需要贯彻执行下面两点方法：</p>
+<ol>
+<li>招高质量的程序员：code sense很重要，每个程序员都需要懂得奥卡姆剃刀原理：若无必要，勿增实体。</li>
+<li>管理层需要有长远的视野而不仅仅是短期目标。</li>
+</ol>
+<p>深度悲观的说，这两个方法真正执行起来的时候也是难度重重，基本不可能完成。</p>
+<p>高质量无论是不是在互联网行业，都意味着价格昂贵，但又有几家公司能给得雇佣的起这么多昂贵的程序员呢？</p>
+<p>而长远的目标在资本的压力之下，也显得一文不值。代码规范提升10%的重要性和“明天上线”这个命令比起来，也是低到尘埃的的。然后日复一日，明天又将是明天，规范性最终消失殆尽，屎山越来越高。</p>
+<p>说到底，这些都是钱的问题，也是最无解的问题，最终在某一天，屎山崩溃，一切回到原点。</p>
+<p>最后，大胆猜测一下，昨天的Google服务崩溃也是因为屎太多了吧。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Suncle</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-12-14
+        
+    </span>
+  </p>
+  
+  
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://flowsnow.oss-cn-shanghai.aliyuncs.com/history/wechat-reward-image.png">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://flowsnow.oss-cn-shanghai.aliyuncs.com/history/alipay-reward-image.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/shit-code/">shit code</a>
+          <a href="/tags/%E8%A7%84%E8%8C%83%E6%80%A7/">规范性</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/2020/12/09/tool-recommendation-useful-alfred-workflow/">
+            <span class="next-text nav-default">神兵利器推荐——你一定不能错过的mac alfred工作流</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="suncle1993/suncle1993.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:im.suncle@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.facebook.com/sunclechen" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://github.com/suncle1993" class="iconfont icon-github" title="github"></a>
+      <a href="https://weibo.com/3655576503" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/flowsnow" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/362765899" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://suncle.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2015 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>Suncle</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-72506112-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script id="baidu_analytics">
+  var _hmt = _hmt || [];
+  (function() {
+    if (window.location.hostname === 'localhost') return;
+    var hm = document.createElement("script"); hm.async = true;
+    hm.src = "https://hm.baidu.com/hm.js?41fc030db57d5570dd22f78997dc4a7e";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script id="baidu_push">
+  (function(){
+    if (window.location.hostname === 'localhost') return;
+    var bp = document.createElement('script'); bp.async = true;
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+
+</body>
+</html>

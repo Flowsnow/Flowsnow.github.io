@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>软件工程实践 on Suncle&#39;s Blog</title>
+    <link>https://suncle.me/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/</link>
+    <description>Recent content in 软件工程实践 on Suncle&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 14 Dec 2020 19:46:46 +0800</lastBuildDate>
+    
+	<atom:link href="https://suncle.me/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>坚持住啊，还在屎山中爬行的同事们</title>
+      <link>https://suncle.me/2020/12/14/best-practice-for-shit-code/</link>
+      <pubDate>Mon, 14 Dec 2020 19:46:46 +0800</pubDate>
+      
+      <guid>https://suncle.me/2020/12/14/best-practice-for-shit-code/</guid>
+      <description>&amp;ldquo;There are only two hard things in Computer Science: cache invalidation and naming things.&amp;rdquo; — Phil Karlton 在计算机领域只有两件艰难的事情：缓存失效和对象命名。 这还真不是一个笑话。写代码是比较容易的事情，但是阅读别</description>
+    </item>
+    
+  </channel>
+</rss>
